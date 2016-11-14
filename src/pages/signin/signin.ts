@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { RobotProvider } from '../../providers/robot-provider';
 
 
 /*
@@ -15,8 +16,9 @@ import { HomePage } from '../home/home';
 })
 export class SigninPage {
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, private robotProvider: RobotProvider) {}
 
+  robotIP: any;
   ionViewDidLoad() {
     console.log('Hello SigninPage Page');
   }
@@ -24,7 +26,12 @@ export class SigninPage {
   	//check for living connection (ping ip)
   	//if no response -> timeout
   	//otherwise redirect to HomePage and save ip in variable
-    this.navCtrl.push(HomePage);
+  	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
+  	this.robotProvider.signIn("192.168.56.101").subscribe(data => {
+      this.robotIP = data;
+      console.log(this.robotIP);
+      });
+    this.navCtrl.setRoot(HomePage);
   }
 
 }
