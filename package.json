@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "integrated_project",
+  "author": "Alexander Willemsen, Bart De Caluwe",
+  "homepage": "xentricator.be",
   "private": true,
   "scripts": {
     "ionic:build": "ionic-app-scripts build",

@@ -3,6 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
 import { HomePage } from '../pages/home/home';
+import { SigninPage } from '../pages/signin/signin';
 
 
 
@@ -13,7 +14,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // set rootpage
-  rootPage: any = HomePage;
+  rootPage: any = SigninPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -24,7 +25,8 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Home', component: HomePage }
+      { title: 'Home', component: HomePage },
+      //{ title: 'Signin', component: SigninPage}
     ];
   }
 
@@ -36,7 +38,7 @@ export class MyApp {
 
   openPage(page) {
     this.menu.close();
-    this.nav.push(page.component);
-    //this.nav.setRoot(page.component);
+    //this.nav.push(page.component);
+    this.nav.setRoot(page.component);
   }
 }
