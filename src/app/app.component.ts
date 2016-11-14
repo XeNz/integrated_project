@@ -1,22 +1,42 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
+import { Component, ViewChild } from '@angular/core';
 
-import { TabsPage } from '../pages/tabs/tabs';
+import { Platform, MenuController, Nav } from 'ionic-angular';
+import { HomePage } from '../pages/home/home';
+
 
 
 @Component({
-  template: `<ion-nav [root]="rootPage"></ion-nav>`
+  templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = TabsPage;
+  @ViewChild(Nav) nav: Nav;
 
-  constructor(platform: Platform) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+  // set rootpage
+  rootPage: any = HomePage;
+  pages: Array<{title: string, component: any}>;
+
+  constructor(
+    public platform: Platform,
+    public menu: MenuController
+  ) {
+    this.initializeApp();
+
+    // set our app's pages
+    this.pages = [
+      { title: 'Home', component: HomePage }
+    ];
+  }
+
+  initializeApp() {
+    this.platform.ready().then(() => {
       StatusBar.styleDefault();
-      Splashscreen.hide();
     });
+  }
+
+  openPage(page) {
+    this.menu.close();
+    this.nav.push(page.component);
+    //this.nav.setRoot(page.component);
   }
 }
