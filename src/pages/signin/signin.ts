@@ -25,6 +25,7 @@ export class SigninPage {
   checkLogin() {
   	//check for living connection (ping ip)
   	//if no response -> timeout
+    //check robot type and store in variable
   	//otherwise redirect to HomePage and save ip in variable
   	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
   	this.robotProvider.signIn("192.168.56.101").subscribe(data => {
