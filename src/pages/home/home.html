@@ -10,13 +10,60 @@
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <ion-card>
+    <ion-card-header>
+      Actions
+    </ion-card-header>
+
+    <ion-list>
+      <ion-item>
+        <ion-icon name="hand" item-left></ion-icon>
+        <ion-label> Wave hands </ion-label>
+        <ion-toggle checked="false"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="football" item-left></ion-icon>
+        <ion-label> Soccer demo </ion-label>
+        <ion-toggle checked="false"></ion-toggle>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="musical-notes" item-left></ion-icon>
+        <ion-label> Dance macarena </ion-label>
+        <ion-toggle checked="false"></ion-toggle>
+      </ion-item>
+       <!-- include weird buttons -->
+    </ion-list>
+  </ion-card>
+
+   <ion-card>
+    <ion-card-header>
+      Volume
+    </ion-card-header>
+
+    <ion-item>
+      <ion-range min="0" max="100" step="5" snaps="true"  [(ngModel)]="volume">
+        <ion-icon range-left small name="volume-down"></ion-icon>
+        <ion-icon range-right name="volume-up"></ion-icon>
+      </ion-range>
+    </ion-item>
+
+  </ion-card>
+
+   <ion-card>
+    <ion-card-header>
+      Say
+    </ion-card-header>
+
+    <ion-item>
+      <!-- Note that <ion-textarea> must load its value from the value or [(ngModel)] attribute. Unlike the native <textarea> element, <ion-textarea> does not support loading its value from the textarea's inner content. -->
+      <ion-textarea></ion-textarea> 
+      <!-- ??? -->
+    </ion-item>
+    <ion-item>
+      <button ion-button>Play</button>
+    </ion-item>
+
+  </ion-card>
 </ion-content>
