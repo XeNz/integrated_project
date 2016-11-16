@@ -32,7 +32,7 @@ export class SigninPage {
   	  data => {
       	this.robotType = data;
       	console.log(data.type);
-        this.navCtrl.setRoot(HomePage, { robotType: this.robotType.type });
+        this.navCtrl.setRoot(HomePage, { robotType: this.robotType.type, robotIP: robotIP});
       },
       err => {
       	console.log(err)
