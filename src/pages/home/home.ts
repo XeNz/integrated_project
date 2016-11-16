@@ -35,4 +35,19 @@ export class HomePage {
 
   }
 
+  ask(text) {
+  	//check for living connection (ping ip)
+  	//if no response -> timeout
+    //check robot type and store in variable
+  	//otherwise redirect to HomePage and save ip in variable
+  	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
+  	this.robotProvider.ask(this.robotIP, text).subscribe(
+  	  data => {
+      	console.log(data.text);
+      },
+      err => {
+      	console.log(err)
+      });
+
+  }
 }

@@ -37,4 +37,10 @@ export class RobotProvider {
 
       //console.log(this.response);
   }
+
+  ask(robotIP, text){
+      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/ask/' + text;
+      var response = this.http.get(url).map(res => res.json());
+      return response;
+  }
 }
