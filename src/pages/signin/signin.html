@@ -17,10 +17,10 @@
     <ion-list>
       <ion-item>
         <ion-label floating>ROBOT IP</ion-label>
-        <ion-input type="text" ng-model="robotIP"></ion-input>
+        <ion-input type="text" [(ngModel)]="robotIP" name="robotIP"></ion-input>
       </ion-item>
     </ion-list>
-    <button ion-button color="secondary" (click)="checkLogin({{ robotIP }})">Login</button>
+    <button ion-button color="secondary" (click)="checkLogin(this.robotIP)">Login</button>
   </ion-card-content>
 
 </ion-card>

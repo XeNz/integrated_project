@@ -28,11 +28,16 @@ export class SigninPage {
     //check robot type and store in variable
   	//otherwise redirect to HomePage and save ip in variable
   	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
-  	this.robotProvider.signIn(robotIP).subscribe(data => {
-      this.robotType = data;
-      console.log(this.robotType);
+  	this.robotProvider.signIn(robotIP).subscribe(
+  	  data => {
+      	this.robotType = data;
+      	console.log(data.type);
+        this.navCtrl.setRoot(HomePage, { robotType: this.robotType.type });
+      },
+      err => {
+      	console.log(err)
       });
-    this.navCtrl.setRoot(HomePage, { robotType: this.robotType.type });
+
   }
 
 }
