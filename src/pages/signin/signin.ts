@@ -36,9 +36,7 @@ export class SigninPage {
     //check robot type and store in variable
   	//otherwise redirect to HomePage and save ip in variable
   	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
-    //
-    //TODO: after 1x faulty ip -> press button -> error mania due to dismiss/dismissAll
-    //
+
 
     this.presentLoading();
   	this.robotProvider.signIn(robotIP).subscribe(
@@ -52,6 +50,9 @@ export class SigninPage {
       	console.log(err)
         this.loader.dismissAll();
         this.errorToast.present();
+        //bug fix for loader error
+        this.navCtrl.pop();
+        this.navCtrl.push(SigninPage);
       });
   }
   presentLoading() {
