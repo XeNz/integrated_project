@@ -28,4 +28,13 @@ export class RobotProvider {
 
       //console.log(this.response);
   }
+
+  getBatteryLevel(robotIP) {
+      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getBatteryLevel';
+
+      var response = this.http.get(url).map(res => res.json());
+      return response;
+
+      //console.log(this.response);
+  }
 }
