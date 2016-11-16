@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController, ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { RobotProvider } from '../../providers/robot-provider';
-import { LoadingController } from 'ionic-angular';
+
 
 /*
   Generated class for the Signin page.
@@ -16,11 +16,15 @@ import { LoadingController } from 'ionic-angular';
 })
 export class SigninPage {
 
-  constructor(public navCtrl: NavController, private robotProvider: RobotProvider, public loadingCtrl: LoadingController) {}
+  constructor(public navCtrl: NavController, private robotProvider: RobotProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {}
 
   robotType: any;
   loader = this.loadingCtrl.create({
     content: "Please wait...",
+  });
+  errorToast = this.toastCtrl.create({
+    message: 'Unable to connect. Please try again.',
+    duration: 3000
   });
   
   ionViewDidLoad() {
@@ -32,6 +36,10 @@ export class SigninPage {
     //check robot type and store in variable
   	//otherwise redirect to HomePage and save ip in variable
   	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
+    //
+    //TODO: after 1x faulty ip -> press button -> error mania due to dismiss/dismissAll
+    //
+
     this.presentLoading();
   	this.robotProvider.signIn(robotIP).subscribe(
   	  data => {
@@ -42,6 +50,8 @@ export class SigninPage {
       },
       err => {
       	console.log(err)
+        this.loader.dismissAll();
+        this.errorToast.present();
       });
   }
   presentLoading() {
