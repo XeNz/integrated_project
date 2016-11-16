@@ -22,17 +22,17 @@ export class SigninPage {
   ionViewDidLoad() {
     console.log('Hello SigninPage Page');
   }
-  checkLogin() {
+  checkLogin(robotIP) {
   	//check for living connection (ping ip)
   	//if no response -> timeout
     //check robot type and store in variable
   	//otherwise redirect to HomePage and save ip in variable
   	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
-  	this.robotProvider.signIn("172.16.233.184").subscribe(data => {
+  	this.robotProvider.signIn(robotIP).subscribe(data => {
       this.robotType = data;
       console.log(this.robotType);
       });
-    this.navCtrl.setRoot(HomePage, { robotType: this.robotType });
+    this.navCtrl.setRoot(HomePage, { robotType: this.robotType.type });
   }
 
 }

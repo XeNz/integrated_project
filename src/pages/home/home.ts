@@ -10,7 +10,7 @@ export class HomePage {
   public robotType: any;
 
   constructor(public navCtrl: NavController, public params:NavParams) {
-      this.robotType = params.get("robotType");
+      this.robotType = params.get('robotType');
   }
 
 }
