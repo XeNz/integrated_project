@@ -15,6 +15,7 @@ export class HomePage {
       this.robotType = params.get('robotType');
       this.robotIP = params.get('robotIP');
       this.checkBatteryLevel();
+      this.repeatCheckBatteryLevel();
   }
 
   checkBatteryLevel() {
@@ -33,6 +34,16 @@ export class HomePage {
       	console.log(err)
       });
 
+  }
+
+  repeatCheckBatteryLevel(){
+  	//TODO: repeatCheckBatteryLevel needs fixerino
+
+  	// while(true){
+
+  	// 	this.checkBatteryLevel();
+  	// 	console.log('checked for battery level');
+  	// }
   }
 
 }
