@@ -25,8 +25,8 @@ export class HomePage {
   	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
   	this.robotProvider.getBatteryLevel(this.robotIP).subscribe(
   	  data => {
-      	this.batteryLevel = data;
-      	console.log(data.batteryLevel);
+      	this.batteryLevel = data.level;
+      	console.log(this.batteryLevel);
 
       },
       err => {
