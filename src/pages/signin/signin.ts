@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { RobotProvider } from '../../providers/robot-provider';
-
+import { LoadingController } from 'ionic-angular';
 
 /*
   Generated class for the Signin page.
@@ -16,9 +16,13 @@ import { RobotProvider } from '../../providers/robot-provider';
 })
 export class SigninPage {
 
-  constructor(public navCtrl: NavController, private robotProvider: RobotProvider) {}
+  constructor(public navCtrl: NavController, private robotProvider: RobotProvider, public loadingCtrl: LoadingController) {}
 
   robotType: any;
+  loader = this.loadingCtrl.create({
+    content: "Please wait...",
+  });
+  
   ionViewDidLoad() {
     console.log('Hello SigninPage Page');
   }
@@ -28,16 +32,19 @@ export class SigninPage {
     //check robot type and store in variable
   	//otherwise redirect to HomePage and save ip in variable
   	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
+    this.presentLoading();
   	this.robotProvider.signIn(robotIP).subscribe(
   	  data => {
       	this.robotType = data;
       	console.log(data.type);
+        this.loader.dismissAll();
         this.navCtrl.setRoot(HomePage, { robotType: this.robotType.type, robotIP: robotIP});
       },
       err => {
       	console.log(err)
       });
-
   }
-
+  presentLoading() {
+    this.loader.present();
+  }
 }
