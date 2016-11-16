@@ -18,7 +18,7 @@ export class SigninPage {
 
   constructor(public navCtrl: NavController, private robotProvider: RobotProvider) {}
 
-  robotIP: any;
+  robotType: any;
   ionViewDidLoad() {
     console.log('Hello SigninPage Page');
   }
@@ -28,11 +28,11 @@ export class SigninPage {
     //check robot type and store in variable
   	//otherwise redirect to HomePage and save ip in variable
   	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
-  	this.robotProvider.signIn("192.168.56.101").subscribe(data => {
-      this.robotIP = data;
-      console.log(this.robotIP);
+  	this.robotProvider.signIn("172.16.233.184").subscribe(data => {
+      this.robotType = data;
+      console.log(this.robotType);
       });
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.setRoot(HomePage, { robotType: this.robotType });
   }
 
 }

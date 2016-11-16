@@ -16,13 +16,13 @@ export class RobotProvider {
   constructor(public http: Http) {
     console.log('Hello RobotProvider Provider');
   }
-  
+
   //
   //https://codybonney.com/allow-cross-origin-resource-sharing-cors-using-flask/
   //
   signIn(robotIP) {
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getTest';
-      
+      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getType';
+
       var response = this.http.get(url).map(res => res.json());
       return response;
 
