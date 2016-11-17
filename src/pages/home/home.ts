@@ -57,8 +57,17 @@ export class HomePage {
       	console.log(data.text);
       },
       err => {
-      	console.log(err)
+      	console.log(err);
       });
+  }
 
+  standInit(){
+      this.robotProvider.standInit(this.robotIP).subscribe(
+          data => {
+              console.log(data);
+          },
+          err => {
+              console.log(err);
+          });
   }
 }

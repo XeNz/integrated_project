@@ -43,4 +43,10 @@ export class RobotProvider {
       var response = this.http.get(url).map(res => res.json());
       return response;
   }
+
+  standInit(robotIP){
+      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/action/StandInit';
+      var response = this.http.get(url).map(res => res.json());
+      return response;
+  }
 }
