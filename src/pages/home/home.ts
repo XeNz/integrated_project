@@ -60,14 +60,15 @@ export class HomePage {
       	console.log(err);
       });
   }
-
-  standInit(){
-      this.robotProvider.standInit(this.robotIP).subscribe(
+  
+  action(action){
+      this.robotProvider.action(this.robotIP, action).subscribe(
           data => {
               console.log(data);
           },
           err => {
               console.log(err);
-          });
+          }
+      )
   }
 }
