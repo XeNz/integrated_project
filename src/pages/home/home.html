@@ -6,14 +6,14 @@
     <ion-title>
       <ion-row responsive-sm>
         <ion-col width-25>
-          Home   
+          Home
         </ion-col>
         <ion-col width-25>
-          {{ robotType }}  
+          {{ robotType }}
         </ion-col>
         <ion-col width-25>
           {{ robotIP }}
-        </ion-col>  
+        </ion-col>
         <ion-col width-25>
           <ion-icon ios="ios-battery-charging" md="md-battery-charging"></ion-icon>
           {{ batteryLevel }}
@@ -92,18 +92,11 @@
     <ion-row responsive-sm>
         <ion-col>
             <ion-card>
-                <ion-item>
-                  <button ion-button (click)="action('StandInit')">StandInit</button>
-                </ion-item>
-            </ion-card>
-        </ion-col>
-        <ion-col>
-            <ion-card>
-                <ion-item>
-                  <button ion-button (click)="action('SitRelax')">SitRelax</button>
-                </ion-item>
-            </ion-card>
-        </ion-col>
+                <ion-item *ngFor="let act of actions">
+                    <button ion-button (click)="action(this.act)">{{ act }}</button>
+              </ion-item>
+          </ion-card>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

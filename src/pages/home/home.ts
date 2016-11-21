@@ -10,12 +10,14 @@ export class HomePage {
   public robotType: any;
   public robotIP: any;
   public batteryLevel: any;
+  public actions: any;
 
   constructor(public navCtrl: NavController, public params:NavParams, public robotProvider:RobotProvider) {
       this.robotType = params.get('robotType');
       this.robotIP = params.get('robotIP');
       this.checkBatteryLevel();
       this.repeatCheckBatteryLevel();
+      this.getActions();
   }
 
   checkBatteryLevel() {
@@ -56,15 +58,25 @@ export class HomePage {
       	console.log(err);
       });
   }
-  
+
   action(action){
       this.robotProvider.action(this.robotIP, action).subscribe(
           data => {
+              console.log(data.posture);
+          },
+          err => {
+              console.log(err);
+          });
+  }
+
+  getActions(){
+      this.robotProvider.getActions(this.robotIP).subscribe(
+          data => {
+              this.actions = data.actions;
               console.log(data);
           },
           err => {
               console.log(err);
-          }
-      )
+          });
   }
 }
