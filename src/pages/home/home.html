@@ -4,11 +4,21 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Home   |
-      {{ robotType }}  |
-      {{ robotIP }}  |
-      <ion-icon ios="ios-battery-charging" md="md-battery-charging"></ion-icon>
-      {{ batteryLevel }}
+      <ion-row responsive-sm>
+        <ion-col width-25>
+          Home   
+        </ion-col>
+        <ion-col width-25>
+          {{ robotType }}  
+        </ion-col>
+        <ion-col width-25>
+          {{ robotIP }}
+        </ion-col>  
+        <ion-col width-25>
+          <ion-icon ios="ios-battery-charging" md="md-battery-charging"></ion-icon>
+          {{ batteryLevel }}
+        </ion-col>
+      </ion-row>
     </ion-title>
   </ion-navbar>
 </ion-header>

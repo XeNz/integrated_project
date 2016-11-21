@@ -39,7 +39,7 @@ export class HomePage {
   repeatCheckBatteryLevel(){
     setInterval(() => {
         this.checkBatteryLevel();
-    }, 5000);
+    }, 30000);
   }
 
   ask(text) {
