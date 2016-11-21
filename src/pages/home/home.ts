@@ -11,6 +11,9 @@ export class HomePage {
   public robotIP: any;
   public batteryLevel: any;
   public actions: any;
+  public x: any;
+  public y: any;
+  public d: any;
 
   constructor(public navCtrl: NavController, public params:NavParams, public robotProvider:RobotProvider) {
       this.robotType = params.get('robotType');
@@ -73,6 +76,16 @@ export class HomePage {
       this.robotProvider.getActions(this.robotIP).subscribe(
           data => {
               this.actions = data.actions;
+              console.log(data);
+          },
+          err => {
+              console.log(err);
+          });
+  }
+
+  move(x, y, d){
+      this.robotProvider.move(this.robotIP, x, y, d).subscribe(
+          data => {
               console.log(data);
           },
           err => {
