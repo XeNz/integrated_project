@@ -22,20 +22,20 @@ export class RobotProvider {
   //
   signIn(robotIP) {
       var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getType';
-
       var response = this.http.get(url).map(res => res.json());
       return response;
-
-      //console.log(this.response);
   }
 
   getBatteryLevel(robotIP) {
       var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getBatteryLevel';
-
       var response = this.http.get(url).map(res => res.json());
       return response;
+  }
 
-      //console.log(this.response);
+  getName(robotIP) {
+      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getName';
+      var response = this.http.get(url).map(res => res.json());
+      return response;
   }
 
   ask(robotIP, text){
@@ -52,6 +52,12 @@ export class RobotProvider {
 
   getActions(robotIP){
       var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getActions';
+      var response = this.http.get(url).map(res => res.json());
+      return response;
+  }
+
+  move(robotIP, x, y, d){
+      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/move/' + x + '/' + y + '/' + d;
       var response = this.http.get(url).map(res => res.json());
       return response;
   }
