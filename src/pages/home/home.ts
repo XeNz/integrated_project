@@ -37,13 +37,9 @@ export class HomePage {
   }
 
   repeatCheckBatteryLevel(){
-  	//TODO: repeatCheckBatteryLevel needs fixerino
-
-  	// while(true){
-
-  	// 	this.checkBatteryLevel();
-  	// 	console.log('checked for battery level');
-  	// }
+    setInterval(() => {
+        this.checkBatteryLevel();
+    }, 5000);
   }
 
   ask(text) {
