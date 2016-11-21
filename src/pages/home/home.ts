@@ -9,16 +9,17 @@ import { NavController, NavParams } from 'ionic-angular';
 export class HomePage {
   public robotType: any;
   public robotIP: any;
+  public robotName: any;
   public batteryLevel: any;
   public actions: any;
-  public x: any;
-  public y: any;
-  public d: any;
 
   constructor(public navCtrl: NavController, public params:NavParams, public robotProvider:RobotProvider) {
       this.robotType = params.get('robotType');
       this.robotIP = params.get('robotIP');
+      this.getName();
+      //first time
       this.checkBatteryLevel();
+      //repeat
       this.repeatCheckBatteryLevel();
       this.getActions();
   }
@@ -39,6 +40,18 @@ export class HomePage {
       	console.log(err)
       });
 
+  }
+
+  getName(){
+    this.robotProvider.getName(this.robotIP).subscribe(
+      data => {
+        this.robotName = data.name;
+        console.log(this.robotName);
+      },
+      err => {
+        console.log(err)
+      });
+      
   }
 
   repeatCheckBatteryLevel(){
@@ -83,8 +96,8 @@ export class HomePage {
           });
   }
 
-  move(x, y, d){
-      this.robotProvider.move(this.robotIP, x, y, d).subscribe(
+  move(moveCoordinateX, moveCoordinateY, moveCoordinateD){
+      this.robotProvider.move(this.robotIP, moveCoordinateX, moveCoordinateY, moveCoordinateD).subscribe(
           data => {
               console.log(data);
           },
