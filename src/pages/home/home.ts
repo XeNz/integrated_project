@@ -7,6 +7,14 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home.html'
 })
 export class HomePage {
+  //dirty fix ionic2
+  public text = null;
+  public volume = null;
+  public moveCoordinateX = null;
+  public moveCoordinateY = null;
+  public moveCoordinateD = null;
+
+
   public robotType: any;
   public robotIP: any;
   public robotName: any;

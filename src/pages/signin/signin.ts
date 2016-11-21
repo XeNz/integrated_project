@@ -18,6 +18,7 @@ export class SigninPage {
 
   constructor(public navCtrl: NavController, private robotProvider: RobotProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController) {}
 
+  robotIP = null;
   robotType: any;
   loader = this.loadingCtrl.create({
     content: "Please wait...",
