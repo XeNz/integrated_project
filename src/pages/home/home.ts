@@ -24,13 +24,15 @@ export class HomePage {
   public robotName: any;
   public batteryLevel: any;
   public actions: any;
-    
+
+  
   public robot: Robot;
 
   constructor(public navCtrl: NavController, public params:NavParams, public robotProvider:RobotProvider) {
     //   this.robotType = params.get('robotType');
     //   this.robotIP = params.get('robotIP');
       this.robot = params.get('robot');
+      this.castRobotType();
       this.robot.getName();
       //first time
       this.robot.checkBatteryLevel();
@@ -39,6 +41,18 @@ export class HomePage {
       this.robot.getActions();
       
   }
+    
+  castRobotType() {
+      if (this.robot.robotType == "NAO") {
+          this.robot = this.robot as Nao;
+      }
+      else if (this.robot.robotType == "PEPPER") {
+          this.robot = this.robot as Pepper;
+      }
+      else if (this.robot.robotType == "JIBO") {
+          this.robot = this.robot as Jibo;
+      }
+    }
 
 
 }
