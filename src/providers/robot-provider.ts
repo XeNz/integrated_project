@@ -32,8 +32,8 @@ export class RobotProvider {
       return response;
   }
 
-  getName(robotIP) {
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getName';
+  getName(robotIP, robotType) {
+      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getName/' + robotType;
       var response = this.http.get(url).map(res => res.json());
       return response;
   }

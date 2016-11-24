@@ -24,7 +24,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public params:NavParams, public robotProvider:RobotProvider) {
       this.robotType = params.get('robotType');
       this.robotIP = params.get('robotIP');
-      this.getName();
+      this.getName(this.robotType);
       //first time
       this.checkBatteryLevel();
       //repeat
@@ -50,8 +50,8 @@ export class HomePage {
 
   }
 
-  getName(){
-    this.robotProvider.getName(this.robotIP).subscribe(
+  getName(robotType){
+    this.robotProvider.getName(this.robotIP, robotType).subscribe(
       data => {
         this.robotName = data.name;
         console.log(this.robotName);
