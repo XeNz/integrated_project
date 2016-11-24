@@ -50,8 +50,8 @@ export class RobotProvider {
       return response;
   }
 
-  getActions(robotIP){
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getActions';
+  getActions(robotIP,robotType){
+      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getActions/' + robotType;
       var response = this.http.get(url).map(res => res.json());
       return response;
   }
