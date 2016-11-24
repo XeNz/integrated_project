@@ -7,6 +7,7 @@ export class Robot {
     robotProvider: RobotProvider;
     batteryLevel: any;
     actions: any;
+    postureActions: any
 
     constructor(robotType,robotIP, robotProvider){
         //TODO: implement constructor
@@ -89,6 +90,7 @@ export class Robot {
       this.robotProvider.getActions(this.robotIP,this.robotType).subscribe(
           data => {
               this.actions = data.actions;
+              this.postureActions = data.postureActions;
               console.log(data);
           },
           err => {

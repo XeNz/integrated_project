@@ -111,7 +111,7 @@
     <ion-row responsive-sm>
         <ion-col>
             <ion-card>
-                <ion-item *ngFor="let act of this.robot.actions">
+                <ion-item *ngFor="let act of this.robot.postureActions">
                     <button ion-button (click)="action(this.act)">{{ act }}</button>
               </ion-item>
           </ion-card>
