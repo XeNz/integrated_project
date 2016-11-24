@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { RobotProvider } from '../../providers/robot-provider';
 import { NavController, NavParams } from 'ionic-angular';
+import { Robot } from '../../models/robot'
+import { Pepper } from '../../models/pepper'
+import { Nao } from '../../models/nao'
+import { Jibo } from '../../models/jibo'
 
 @Component({
   selector: 'page-home',
@@ -20,16 +24,20 @@ export class HomePage {
   public robotName: any;
   public batteryLevel: any;
   public actions: any;
+    
+  public robot: Robot;
 
   constructor(public navCtrl: NavController, public params:NavParams, public robotProvider:RobotProvider) {
-      this.robotType = params.get('robotType');
-      this.robotIP = params.get('robotIP');
-      this.getName();
+    //   this.robotType = params.get('robotType');
+    //   this.robotIP = params.get('robotIP');
+      this.robot = params.get('robot');
+      this.robot.getName();
       //first time
       this.checkBatteryLevel();
       //repeat
       this.repeatCheckBatteryLevel();
       this.getActions();
+      
   }
 
   checkBatteryLevel() {
@@ -50,17 +58,6 @@ export class HomePage {
 
   }
 
-  getName(){
-    this.robotProvider.getName(this.robotIP, this.robotType).subscribe(
-      data => {
-        this.robotName = data.name;
-        console.log(this.robotName);
-      },
-      err => {
-        console.log(err)
-      });
-      
-  }
 
   repeatCheckBatteryLevel(){
     setInterval(() => {

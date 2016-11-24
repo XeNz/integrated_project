@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { RobotProvider } from '../../providers/robot-provider';
+import { Robot } from '../../models/robot'
+import { Pepper } from '../../models/pepper'
+import { Nao } from '../../models/nao'
+import { Jibo } from '../../models/jibo'
 
 
 /*
@@ -42,10 +46,24 @@ export class SigninPage {
     this.presentLoading();
   	this.robotProvider.signIn(robotIP).subscribe(
   	  data => {
-      	this.robotType = data;
-      	console.log(data.type);
+        this.robotType = data.type;
+        let robot: any;
+        if (this.robotType == "NAO") {
+          let nao = new Nao(this.robotType,this.robotIP,this.robotProvider);
+          robot = nao;
+        }
+        else if (this.robotType == "PEPPER") {
+          let pepper = new Pepper(this.robotType,this.robotIP,this.robotProvider);
+          robot = pepper;
+        }
+        else if (this.robotType == "JIBO") {
+          let jibo = new Jibo(this.robotType,this.robotIP,this.robotProvider);
+          robot = jibo;
+        }
+      	console.log(robot);
         this.loader.dismissAll();
-        this.navCtrl.setRoot(HomePage, { robotType: this.robotType.type, robotIP: robotIP});
+        //this.navCtrl.setRoot(HomePage, { robotType: this.robotType.type, robotIP: robotIP});
+        this.navCtrl.setRoot(HomePage,{robot: robot} )
       },
       err => {
       	console.log(err)
