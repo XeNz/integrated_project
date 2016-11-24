@@ -112,7 +112,7 @@
         <ion-col>
             <ion-card>
                 <ion-item *ngFor="let act of this.robot.postureActions">
-                    <button ion-button (click)="this.action(this.act)">{{ act }}</button>
+                    <button ion-button (click)="this.robot.action(this.act)">{{ act }}</button>
               </ion-item>
           </ion-card>
       </ion-col>
