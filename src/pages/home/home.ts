@@ -33,81 +33,12 @@ export class HomePage {
       this.robot = params.get('robot');
       this.robot.getName();
       //first time
-      this.checkBatteryLevel();
+      this.robot.checkBatteryLevel();
       //repeat
-      this.repeatCheckBatteryLevel();
-      this.getActions();
+      this.robot.repeatCheckBatteryLevel();
+      this.robot.getActions();
       
   }
 
-  checkBatteryLevel() {
-  	//check for living connection (ping ip)
-  	//if no response -> timeout
-    //check robot type and store in variable
-  	//otherwise redirect to HomePage and save ip in variable
-  	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
-  	this.robotProvider.getBatteryLevel(this.robotIP).subscribe(
-  	  data => {
-      	this.batteryLevel = data.level;
-      	console.log(this.batteryLevel);
 
-      },
-      err => {
-      	console.log(err)
-      });
-
-  }
-
-
-  repeatCheckBatteryLevel(){
-    setInterval(() => {
-        this.checkBatteryLevel();
-    }, 30000);
-  }
-
-  ask(text) {
-  	//check for living connection (ping ip)
-  	//if no response -> timeout
-    //check robot type and store in variable
-  	//otherwise redirect to HomePage and save ip in variable
-  	//http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
-  	this.robotProvider.ask(this.robotIP, text).subscribe(
-  	  data => {
-      	console.log(data.text);
-      },
-      err => {
-      	console.log(err);
-      });
-  }
-
-  action(action){
-      this.robotProvider.action(this.robotIP, action).subscribe(
-          data => {
-              console.log(data.posture);
-          },
-          err => {
-              console.log(err);
-          });
-  }
-
-  getActions(){
-      this.robotProvider.getActions(this.robotIP,this.robotType).subscribe(
-          data => {
-              this.actions = data.actions;
-              console.log(data);
-          },
-          err => {
-              console.log(err);
-          });
-  }
-
-  move(moveCoordinateX, moveCoordinateY, moveCoordinateD){
-      this.robotProvider.move(this.robotIP, moveCoordinateX, moveCoordinateY, moveCoordinateD).subscribe(
-          data => {
-              console.log(data);
-          },
-          err => {
-              console.log(err);
-          });
-  }
 }

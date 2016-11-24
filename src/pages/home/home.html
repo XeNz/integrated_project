@@ -12,11 +12,11 @@
           {{ this.robot.robotName }}
         </ion-col>
         <ion-col width-25>
-          {{ robotIP }}
+          {{ this.robot.robotIP }}
         </ion-col>
         <ion-col width-25>
           <ion-icon ios="ios-battery-charging" md="md-battery-charging"></ion-icon>
-          {{ batteryLevel }}
+          {{ this.robot.batteryLevel }}
         </ion-col>
       </ion-row>
     </ion-title>
@@ -111,7 +111,7 @@
     <ion-row responsive-sm>
         <ion-col>
             <ion-card>
-                <ion-item *ngFor="let act of actions">
+                <ion-item *ngFor="let act of this.robot.actions">
                     <button ion-button (click)="action(this.act)">{{ act }}</button>
               </ion-item>
           </ion-card>
