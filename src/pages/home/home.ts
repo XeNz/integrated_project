@@ -12,6 +12,8 @@ import { Jibo } from '../../models/jibo'
 })
 export class HomePage {
   //dirty fix ionic2
+  public move = null;
+  public ask = null;
   public text = null;
   public volume = null;
   public moveCoordinateX = null;
