@@ -11,8 +11,8 @@ export class RobotListProvider {
         this.af = af;
     }
 
-    addRobotToList(user, ip){
-        let robotList = this.af.database.object(user + '/robotList/');
+    addRobotToList(userID, ip){
+        let robotList = this.af.database.object(userID + '/robotList/');
         robotList.update({
             ip: ip
         });

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { RobotListProvider } from '../../providers/RobotList-provider';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
@@ -17,11 +17,13 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 export class RobotListPage {
   robotList: any[];
   af: AngularFire;
+  user: any;
 
   constructor(public navCtrl: NavController,
              private robotListProvider:RobotListProvider,
-             af:AngularFire) 
+             af:AngularFire, public params: NavParams) 
              {
+    this.user = params.get('user');
                this.af = af;
              }
 
@@ -29,8 +31,8 @@ export class RobotListPage {
     console.log('Hello RobotListPage Page');
   }
 
-  addRobotToList(user, ip){
-    this.robotListProvider.addRobotToList(user, ip);
+  addRobotToList(ip){
+    this.robotListProvider.addRobotToList(this.user.uid, ip);
   }
 
   // addRobotToLost(user, ip){

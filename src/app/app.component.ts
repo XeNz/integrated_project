@@ -9,6 +9,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { UserPage } from '../pages/user/user';
 import { SignoutPage } from '../pages/signout/signout';
 import { LoginPage } from '../pages/login/login';
+import { RobotListPage } from '../pages/robot-list/robot-list';
 
 
 @Component({
@@ -33,11 +34,12 @@ export class MyApp {
 
       //{ title: 'Signin', component: SigninPage}
     ];
-    this.af.auth.subscribe( user => {
+    this.af.auth.subscribe(user => {
+      console.log(user);
     if (user) {
-      this.rootPage = HomePage;
+      this.nav.setRoot(RobotListPage,{user:user.uid});
     } else {
-      this.rootPage = LoginPage;
+      this.nav.setRoot(LoginPage);
     }
     });
     platform.ready().then(() => {
