@@ -17,7 +17,17 @@
   <ion-item>
   <button ion-button (click)="addRobotToList('99999999')">Test</button>
   </ion-item>
-  <ion-item *ngFor="let obj of this.robotListje">
-    {{ obj.ip }}
-  </ion-item>
+
+  <ion-card>
+  <ion-card-header>
+    Choose a robot
+  </ion-card-header>
+
+  <ion-list *ngFor="let obj of this.robotList">
+    <button ion-item (click)="checkLogin(obj.ip)">
+      {{ obj.ip }}
+    </button>
+
+  </ion-list>
+</ion-card>
 </ion-content>
