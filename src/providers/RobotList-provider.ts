@@ -4,7 +4,7 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 @Injectable()
 export class RobotListProvider {
     af: AngularFire;
-    robotList: any[];
+    robotList: FirebaseListObservable<[any]>;
     
     constructor(af:AngularFire) {
         console.log('Hello RobotListProvider');
@@ -18,7 +18,8 @@ export class RobotListProvider {
         });
     }
     
-    getRobotList(user){
-        
+    getRobotList(userID){
+        this.robotList = this.af.database.list(userID + '/robotList/');
+        console.log(this.robotList);
     }
 }

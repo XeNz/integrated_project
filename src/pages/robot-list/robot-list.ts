@@ -15,9 +15,11 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
   templateUrl: 'robot-list.html'
 })
 export class RobotListPage {
-  robotList: any[];
+  robotListje: any[];
   af: AngularFire;
   user: any;
+  robotList: FirebaseListObservable<[any]>;
+
 
   constructor(public navCtrl: NavController,
              private robotListProvider:RobotListProvider,
@@ -26,6 +28,7 @@ export class RobotListPage {
     this.user = params.get('user');
                this.af = af;
                console.log("HALLO");
+               this.getRobotList();
              }
 
   ionViewDidLoad() {
@@ -37,11 +40,10 @@ export class RobotListPage {
     this.robotListProvider.addRobotToList(this.user, ip);
   }
 
-  // addRobotToLost(user, ip){
-  //   let robotList = this.af.database.object(user + '/robotList/');
-  //     robotList.update({
-  //       ip: ip
-  //     });
-  // }
-
+  getRobotList(){
+    this.robotList = this.af.database.list(this.user + '/robotList/');
+    this.robotList.subscribe( data => {
+      this.robotListje = data;  
+    });
+  }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController} from 'ionic-angular';
 import { SigninPage } from '../signin/signin';
+import { AuthData } from '../../providers/auth-data'
 
 /*
   Generated class for the Signout page.
@@ -14,7 +15,7 @@ import { SigninPage } from '../signin/signin';
 })
 export class SignoutPage {
 
-  constructor(public navCtrl: NavController,public toastCtrl: ToastController) {}
+  constructor(public navCtrl: NavController,public toastCtrl: ToastController, public authData: AuthData) {}
 
   ionViewDidLoad() {
     console.log('Hello SignoutPage Page');
@@ -24,6 +25,7 @@ export class SignoutPage {
   	//clear ROBOT IP variable
   	//redirect to sign in page
   	this.presentToast();
+    this.authData.logoutUser();
     this.navCtrl.setRoot(SigninPage);
   }
 
