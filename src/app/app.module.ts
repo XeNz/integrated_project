@@ -10,8 +10,10 @@ import { SignupPage } from '../pages/signup/signup';
 import { SigninPage } from '../pages/signin/signin';
 import { SignoutPage } from '../pages/signout/signout';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
+import { RobotListPage } from '../pages/robot-list/robot-list';
 
 import { RobotProvider } from '../providers/robot-provider'
+import { RobotListProvider } from '../providers/RobotList-provider'
 import { AuthData } from '../providers/auth-data';
 
 // Import the AF2 Module
@@ -41,7 +43,8 @@ const myFirebaseAuthConfig = {
     UserPage,
     LoginPage,
     SignupPage,
-    ResetPasswordPage
+    ResetPasswordPage,
+    RobotListPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -57,8 +60,9 @@ const myFirebaseAuthConfig = {
     UserPage,
     LoginPage,
     SignupPage,
-    ResetPasswordPage
+    ResetPasswordPage,
+    RobotListPage
   ],
-  providers: [RobotProvider,AuthData,]
+  providers: [RobotProvider,AuthData,RobotListProvider]
 })
 export class AppModule {}
