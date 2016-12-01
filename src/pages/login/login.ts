@@ -1,7 +1,8 @@
 import {
   NavController,
   LoadingController,
-  AlertController
+  AlertController,
+  MenuController
 } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -25,7 +26,8 @@ export class LoginPage {
 
   constructor(public nav: NavController, public authData: AuthData,
     public formBuilder: FormBuilder, public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,private menuCtrl: MenuController) {
+    this.menuCtrl.enable(false);
 
     this.loginForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],

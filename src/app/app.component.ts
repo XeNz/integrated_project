@@ -1,7 +1,9 @@
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { Component, ViewChild } from '@angular/core';
+import { Platform, MenuController, Nav, ToastController } from 'ionic-angular';
+
 import { AngularFire } from 'angularfire2';
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import { AuthData } from '../providers/auth-data';
 
 import { HomePage } from '../pages/home/home';
 import { SigninPage } from '../pages/signin/signin';
@@ -23,32 +25,28 @@ export class MyApp {
   pages: Array<{ title: string, component: any }>;
   af: AngularFire;
 
-  constructor(public platform: Platform, public menu: MenuController, af: AngularFire) {
+  constructor(public platform: Platform, public menu: MenuController, af: AngularFire, public toastCtrl: ToastController, public authData: AuthData) {
     // set our app's pages
     this.af = af;
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'User', component: UserPage },
       { title: 'Settings', component: SettingsPage },
-      { title: 'Signout', component: SignoutPage },
 
-      //{ title: 'Signin', component: SigninPage}
     ];
     this.af.auth.subscribe(user => {
       console.log(user);
-    if (user) {
-      this.nav.setRoot(RobotListPage,{user:user.uid});
-    } else {
-      this.nav.setRoot(LoginPage);
-    }
+      if (user) {
+        this.nav.setRoot(RobotListPage, { user: user.uid });
+      } else {
+        this.nav.setRoot(LoginPage);
+      }
     });
     platform.ready().then(() => {
-    // Okay, so the platform is ready and our plugins are available.
-    // Here you can do any higher level native things you might need.
-    StatusBar.styleDefault();
-    Splashscreen.hide();
+      StatusBar.styleDefault();
+      Splashscreen.hide();
     });
-    
+
   }
 
   initializeApp() {
@@ -61,5 +59,21 @@ export class MyApp {
     this.menu.close();
     this.nav.push(page.component);
     //this.nav.setRoot(page.component);
+  }
+  
+  signOut() {
+    //clear session, close menu, redirect
+    this.menu.close();
+    this.presentLogoutToast();
+    this.authData.logoutUser();
+    this.nav.setRoot(SigninPage);
+  }
+
+  presentLogoutToast() {
+    let toast = this.toastCtrl.create({
+      message: 'You have signed out successfully.',
+      duration: 3000
+    });
+    toast.present();
   }
 }
