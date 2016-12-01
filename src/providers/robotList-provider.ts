@@ -7,7 +7,6 @@ export class RobotListProvider {
     robotList: FirebaseListObservable<[any]>;
     
     constructor(af:AngularFire) {
-        console.log('Hello RobotListProvider');
         this.af = af;
     }
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController, AlertController, MenuController } from 'ionic-angular';
 
-import { RobotListProvider } from '../../providers/RobotList-provider';
+import { RobotListProvider } from '../../providers/robotList-provider';
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 import { RobotProvider } from '../../providers/robot-provider';
 
@@ -41,12 +41,11 @@ export class RobotListPage {
     this.menuCtrl.enable(false);
     this.user = params.get('user');
     this.af = af;
-    console.log("HALLO");
     this.getRobotList();
   }
 
   ionViewDidLoad() {
-    console.log('Hello RobotListPage Page');
+    
   }
 
   addRobotToList() {
@@ -77,18 +76,11 @@ export class RobotListPage {
     prompt.present();
 
   }
-  //(click)="checkLogin(this.robotIP)">
+
   presentLoading() {
     this.loader.present();
   }
   checkLogin(robotIP) {
-    //check for living connection (ping ip)
-    //if no response -> timeout
-    //check robot type and store in variable
-    //otherwise redirect to HomePage and save ip in variable
-    //http://www.gajotres.net/ionic-2-making-rest-http-requests-like-a-pro/
-
-
     this.presentLoading();
     this.robotProvider.signIn(robotIP).subscribe(
       data => {
@@ -108,7 +100,6 @@ export class RobotListPage {
         }
         console.log(robot);
         this.loader.dismissAll();
-        //this.navCtrl.setRoot(HomePage, { robotType: this.robotType.type, robotIP: robotIP});
         this.navCtrl.setRoot(HomePage, { robot: robot })
       },
       err => {

@@ -58,7 +58,6 @@ export class MyApp {
   openPage(page) {
     this.menu.close();
     this.nav.push(page.component);
-    //this.nav.setRoot(page.component);
   }
   
   signOut() {
@@ -75,5 +74,15 @@ export class MyApp {
       duration: 3000
     });
     toast.present();
+  }
+  connectToOtherRobot(){
+    this.menu.close();
+        this.af.auth.subscribe(user => {
+      if (user) {
+        this.nav.setRoot(RobotListPage, { user: user.uid });
+      } else {
+        this.nav.setRoot(LoginPage);
+      }
+    });
   }
 }

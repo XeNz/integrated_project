@@ -16,7 +16,7 @@ export class SettingsPage {
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
-    console.log('Hello SettingsPage Page');
+    
   }
 
 }

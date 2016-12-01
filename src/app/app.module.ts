@@ -13,7 +13,7 @@ import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { RobotListPage } from '../pages/robot-list/robot-list';
 
 import { RobotProvider } from '../providers/robot-provider'
-import { RobotListProvider } from '../providers/RobotList-provider'
+import { RobotListProvider } from '../providers/robotList-provider'
 import { AuthData } from '../providers/auth-data';
 
 // Import the AF2 Module

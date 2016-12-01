@@ -11,7 +11,13 @@
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
-      <button ion-item (click)="signOut()">Signout</button>
+      <button ion-item (click)="connectToOtherRobot()">
+        Connect to other robot
+      </button>
+      <button ion-item (click)="signOut()">
+        Signout
+      </button>
+
     </ion-list>
   </ion-content>
 

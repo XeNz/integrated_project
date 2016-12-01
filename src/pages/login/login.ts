@@ -7,7 +7,6 @@ import {
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
-//import { HomePage } from '../home/home';
 import { RobotListPage } from '../robot-list/robot-list';
 import { SignupPage } from '../signup/signup';
 import { ResetPasswordPage } from '../reset-password/reset-password';
@@ -47,10 +46,6 @@ export class LoginPage {
       console.log(this.loginForm.value);
     } else {
       this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password).then(authData => {
-        // console.log(authData.uid);
-        // let userID: string = authData.uid;
-        // console.log(userID);        
-        //this.nav.setRoot(RobotListPage,{userID : userID});
       }, error => {
         this.loading.dismiss().then(() => {
           let alert = this.alertCtrl.create({

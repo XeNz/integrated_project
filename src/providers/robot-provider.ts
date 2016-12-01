@@ -14,7 +14,6 @@ export class RobotProvider {
   robotPort: string = ":5000";
 
   constructor(public http: Http) {
-    console.log('Hello RobotProvider Provider');
   }
 
   //
