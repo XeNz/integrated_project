@@ -20,6 +20,6 @@ export class RobotListProvider {
     
     getRobotList(userID){
         this.robotList = this.af.database.list(userID + '/robotList/');
-        console.log(this.robotList);
+        return this.robotList;
     }
 }

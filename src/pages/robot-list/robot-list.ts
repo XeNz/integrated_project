@@ -41,8 +41,8 @@ export class RobotListPage {
   }
 
   getRobotList(){
-    this.robotList = this.af.database.list(this.user + '/robotList/');
-    this.robotList.subscribe( data => {
+    this.robotListProvider.getRobotList(this.user)
+    .subscribe( data => {
       this.robotListje = data;  
     });
   }
