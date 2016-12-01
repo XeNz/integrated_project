@@ -25,6 +25,7 @@ export class RobotListPage {
              {
     this.user = params.get('user');
                this.af = af;
+               console.log("HALLO");
              }
 
   ionViewDidLoad() {
@@ -32,7 +33,8 @@ export class RobotListPage {
   }
 
   addRobotToList(ip){
-    this.robotListProvider.addRobotToList(this.user.uid, ip);
+    console.log(this.user);
+    this.robotListProvider.addRobotToList(this.user, ip);
   }
 
   // addRobotToLost(user, ip){
