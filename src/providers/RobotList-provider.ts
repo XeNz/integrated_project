@@ -22,4 +22,7 @@ export class RobotListProvider {
         this.robotList = this.af.database.list(userID + '/robotList/');
         return this.robotList;
     }
+    deleteRobotIP(robotIP) {
+        //this.robotList.remove()
+    }
 }

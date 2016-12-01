@@ -126,4 +126,7 @@ export class RobotListPage {
         this.robotList = data;
       });
   }
+  deleteRobotIP(robotIP) {
+    this.robotListProvider.deleteRobotIP(robotIP);
+  }
 }

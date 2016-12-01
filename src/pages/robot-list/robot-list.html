@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <ion-item>
-  <button ion-button (click)="addRobotToList('99999999')">Test</button>
+  <button ion-button (click)="addRobotToList()">Add robot</button>
   </ion-item>
 
   <ion-card>
@@ -25,7 +25,8 @@
 
   <ion-list *ngFor="let obj of this.robotList">
     <button ion-item (click)="checkLogin(obj.ip)">
-      {{ obj.ip }}
+      {{ obj.ip }} 
+      <ion-icon name="close" item-right (click)="deleteRobotIP(obj.ip)"> </ion-icon>
     </button>
 
   </ion-list>
