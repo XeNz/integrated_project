@@ -5,23 +5,33 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 export class RobotListProvider {
     af: AngularFire;
     robotList: FirebaseListObservable<[any]>;
-    
-    constructor(af:AngularFire) {
+
+    constructor(af: AngularFire) {
         this.af = af;
     }
 
-    addRobotToList(userID, ip){
+    addRobotToList(userID, ip) {
         let robotList = this.af.database.list(userID + '/robotList/');
         robotList.push({
             ip: ip
         });
     }
-    
-    getRobotList(userID){
+
+    getRobotList(userID) {
         this.robotList = this.af.database.list(userID + '/robotList/');
         return this.robotList;
     }
-    deleteRobotIP(robotIP) {
-        //this.robotList.remove()
+    deleteRobotIP(userID, robotIP, key) {
+        //console.log("deleterobotip" + robotIP + " , " + userID);
+        const queryObservable = this.af.database.list(userID + '/robotList/', {
+            query: {
+                orderByChild: 'ip',
+                equalTo: robotIP
+            }
+        });
+        // MAGIC ALERT
+        // actually not even sure if query is needed, might only need key to remove
+        queryObservable.remove(key);
+        //console.log(queryObservable);
     }
 }

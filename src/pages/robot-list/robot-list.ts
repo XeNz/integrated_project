@@ -13,12 +13,7 @@ import { Jibo } from '../../models/jibo';
 import { HomePage } from '../home/home';
 
 
-/*
-  Generated class for the RobotList page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-robot-list',
   templateUrl: 'robot-list.html'
@@ -98,7 +93,7 @@ export class RobotListPage {
           let jibo = new Jibo(this.robotType, robotIP, this.robotProvider);
           robot = jibo;
         }
-        console.log(robot);
+        //console.log(robot);
         this.loader.dismissAll();
         this.navCtrl.setRoot(HomePage, { robot: robot })
       },
@@ -118,7 +113,8 @@ export class RobotListPage {
         this.robotList = data;
       });
   }
-  deleteRobotIP(robotIP) {
-    this.robotListProvider.deleteRobotIP(robotIP);
+  deleteRobotIP(robotIP, key: string) {
+    console.log(key);
+    this.robotListProvider.deleteRobotIP(this.user,robotIP,key);
   }
 }
