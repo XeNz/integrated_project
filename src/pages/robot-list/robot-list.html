@@ -24,11 +24,11 @@
   </ion-card-header>
 
   <ion-list *ngFor="let obj of this.robotList">
-    <button ion-item>
+    <button ion-item (click)="checkLogin(obj.ip)">
       {{ obj.ip }} 
       <!--maybe connect on this icon/other icon instead of the entire button idk-->
       <!--added bogus style tag to test-->
-      <ion-icon name="log-in" style="padding-right:35px;" item-right  (click)="checkLogin(obj.ip)"></ion-icon>
+      <ion-icon name="log-in" style="padding-right:35px;" item-right ></ion-icon>
       <ion-icon name="close" item-right (click)="deleteRobotIP(obj.ip,obj.$key)"> </ion-icon>
     </button>
 
