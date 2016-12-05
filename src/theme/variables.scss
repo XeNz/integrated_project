@@ -31,6 +31,15 @@ $colors: (
   dark:       #222
 );
 
+$primarycolor:    #FA6665;
+$secondarycolor:  #7F9CFC;
+$dangercolor:     #f53d3d;
+$lightcolor:      #f4f4f4;
+$darkcolor:       #222;
+
+$toolbar-background: $primarycolor;
+$button-md-background-color: $secondarycolor;
+
 
 // App iOS Variables
 // --------------------------------------------------
