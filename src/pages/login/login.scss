@@ -59,3 +59,9 @@ ion-input {
   border-bottom-color: #fa6665;
   box-shadow: none;
 }
+body > ion-app > ng-component > ion-nav > page-login > ion-header > ion-navbar > div.toolbar-content.toolbar-content-md > img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    height: 2em;
+}

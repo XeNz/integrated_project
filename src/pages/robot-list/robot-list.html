@@ -5,26 +5,19 @@
   Ionic pages and navigation.
 -->
 <ion-header class="headerLogo">
-
   <ion-navbar>
-    <ion-title>Connect to a robot</ion-title>
+    <img src="../../assets/images/RobotRemoteNaamLogo.png">
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
-  <ion-item>
-  <button ion-button (click)="addRobotToList()">Add robot</button>
-  </ion-item>
-
   <ion-card>
-  <ion-card-header>
-    Choose a robot
-  </ion-card-header>
+    <ion-card-header>
+      Choose a robot
+    </ion-card-header>
 
-  <ion-list *ngFor="let obj of this.robotList">
-    <button ion-item (click)="checkLogin(obj.ip)">
+    <ion-list class = "center" *ngFor="let obj of this.robotList">
+      <button ion-item (click)="checkLogin(obj.ip)">
       {{ obj.ip }} 
       <!--maybe connect on this icon/other icon instead of the entire button idk-->
       <!--added bogus style tag to test-->
@@ -32,6 +25,11 @@
       <ion-icon name="close" item-right (click)="deleteRobotIP(obj.ip,obj.$key)"> </ion-icon>
     </button>
 
-  </ion-list>
-</ion-card>
+    </ion-list>
+  </ion-card>
+
+  <ion-fab bottom right>
+    <button ion-fab mini (click)="addRobotToList()" ><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
 </ion-content>
