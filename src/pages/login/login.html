@@ -1,18 +1,20 @@
 <ion-header class="headerLogo">
   <ion-navbar color="primary">
-    <ion-title>
-      Login
-    </ion-title>
+    
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+    <ion-title>
+      Login
+    </ion-title>
+    
   <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
 
     <ion-item>
-      <ion-label stacked>Email</ion-label>
+      <!--<ion-label stacked>Email</ion-label>-->
       <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
-        placeholder="Your email address"
+        placeholder="Email"
         [class.invalid]="!loginForm.controls.email.valid &&
           (emailChanged || submitAttempt)"></ion-input>
     </ion-item>
@@ -22,10 +24,10 @@
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Password</ion-label>
+      <!--<ion-label stacked>Password</ion-label>-->
       <ion-input #password formControlName="password" type="password"
         (change)="elementChanged(password)"
-        placeholder="Your password"
+        placeholder="Password"
         [class.invalid]="!loginForm.controls.password.valid &&
           (passwordChanged || submitAttempt)"></ion-input>
     </ion-item>
@@ -37,15 +39,16 @@
     <button ion-button block type="submit">
       Login
     </button>
+      
+    <button ion-button block clear (click)="goToResetPassword()">
+        Forgot your email or password?
+    </button>
+
+    <button ion-button block (click)="createAccount()">
+        Sign up
+    </button>
 
   </form>
 
-  <button ion-button block clear (click)="goToResetPassword()">
-    I forgot my password 🙁
-  </button>
-
-  <button ion-button block clear (click)="createAccount()">
-    Create a new account
-  </button>
 
 </ion-content>
