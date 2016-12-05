@@ -1,30 +1,44 @@
 page-login {
 form {
-margin-bottom: 32px;
+    margin-bottom: 32px;
+
 button {
-margin-top: 20px;
+    margin: 25px;
+    font-size: 3em;
+    width: 80%;
 }
 }
 
 p {
-font-size: 0.8em;
-color: #d2d2d2;
+    font-size: 0.8em;
+    color: #d2d2d2;
 }
-
-ion-label {
-margin-left: 5px;
+    
+.or {
+    text-align: center;
+}
+    
+.forgot {
+    margin-top: 0px;
+    margin-bottom: 4px;
+    font-size: 0.5em;
 }
 
 ion-input {
-padding: 5px;
+    margin-top: 5px;
+    padding: 2px;
+    font-size: 0.8em;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #7F9CFC;
 }
 
 .invalid {
-border-bottom: 1px solid #FF6153;
+    border-color: #FF6153;
 }
 
 .error-message .item-inner {
-border-bottom: 0 !important;
+    border: 0 !important;
 }
 
 }
