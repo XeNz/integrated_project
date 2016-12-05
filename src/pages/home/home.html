@@ -4,11 +4,21 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Home   |
-      {{ robotType }}  |
-      {{ robotIP }}  |
-      <ion-icon ios="ios-battery-charging" md="md-battery-charging"></ion-icon>
-      {{ batteryLevel }}
+      <ion-row class="menuRow" responsive-sm>
+        <ion-col class="hiddenMenuItems" width-25>
+          Home
+        </ion-col>
+        <ion-col id="menuRobotName" class="menuItems" width-25>
+          {{ this.robot.robotName }}
+        </ion-col>
+        <ion-col class="hiddenMenuItems" width-25>
+          {{ this.robot.robotIP }}
+        </ion-col>
+        <ion-col class="menuItems" width-25>
+          <ion-icon ios="ios-battery-charging" md="md-battery-charging"></ion-icon>
+          {{ this.robot.batteryLevel }}
+        </ion-col>
+      </ion-row>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -78,6 +88,35 @@
 
       </ion-card>
       </ion-col>
+      <ion-col width-30 offset-10>
+       <ion-card>
+        <ion-card-header>
+          Move
+        </ion-card-header>
+
+        <ion-item>
+          <!-- Note that <ion-textarea> must load its value from the value or [(ngModel)] attribute. Unlike the native <textarea> element, <ion-textarea> does not support loading its value from the textarea's inner content. -->
+          <ion-input [(ngModel)]="moveCoordinateX" name="moveCoordinateX" placeholder="x"></ion-input>
+          <ion-input [(ngModel)]="moveCoordinateY" name="moveCoordinateY" placeholder="y"></ion-input>
+          <ion-input [(ngModel)]="moveCoordinateD" name="moveCoordinateD" placeholder="d"></ion-input>
+          <!-- ??? -->
+        </ion-item>
+        <ion-item>
+          <button ion-button (click)="move(this.moveCoordinateX, this.moveCoordinateY, this.moveCoordinateD)">Move</button>
+        </ion-item>
+
+      </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row responsive-sm>
+        <ion-col>
+            <ion-card>
+                <ion-item *ngFor="let act of this.robot.postureActions">
+                    <button ion-button (click)="this.robot.action(this.act)">{{ act }}</button>
+              </ion-item>
+          </ion-card>
+      </ion-col>
     </ion-row>
   </ion-grid>
-</ion-content>
+  <iframe width="380" height="360" src="https://www.youtube.com/embed/Hp821c75lIo" frameborder="0" allowfullscreen></iframe>
+  </ion-content>
