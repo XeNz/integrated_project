@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController, AlertController, MenuController } from 'ionic-angular';
 
 import { RobotListProvider } from '../../providers/robotList-provider';
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import { AngularFire } from 'angularfire2';
 import { RobotProvider } from '../../providers/robot-provider';
 
-import { Robot } from '../../models/robot';
 import { Pepper } from '../../models/pepper';
 import { Nao } from '../../models/nao';
 import { Jibo } from '../../models/jibo';

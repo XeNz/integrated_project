@@ -4,17 +4,17 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      <ion-row responsive-sm>
-        <ion-col width-25>
+      <ion-row class="menuRow" responsive-sm>
+        <ion-col class="hiddenMenuItems" width-25>
           Home
         </ion-col>
-        <ion-col width-25>
+        <ion-col id="menuRobotName" class="menuItems" width-25>
           {{ this.robot.robotName }}
         </ion-col>
-        <ion-col width-25>
+        <ion-col class="hiddenMenuItems" width-25>
           {{ this.robot.robotIP }}
         </ion-col>
-        <ion-col width-25>
+        <ion-col class="menuItems" width-25>
           <ion-icon ios="ios-battery-charging" md="md-battery-charging"></ion-icon>
           {{ this.robot.batteryLevel }}
         </ion-col>
@@ -118,5 +118,5 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <iframe width="640" height="360" src="https://www.youtube.com/embed/Hp821c75lIo" frameborder="0" allowfullscreen></iframe>
+  <iframe width="380" height="360" src="https://www.youtube.com/embed/Hp821c75lIo" frameborder="0" allowfullscreen></iframe>
   </ion-content>

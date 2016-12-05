@@ -6,10 +6,8 @@ import { AngularFire } from 'angularfire2';
 import { AuthData } from '../providers/auth-data';
 
 import { HomePage } from '../pages/home/home';
-import { SigninPage } from '../pages/signin/signin';
 import { SettingsPage } from '../pages/settings/settings';
 import { UserPage } from '../pages/user/user';
-import { SignoutPage } from '../pages/signout/signout';
 import { LoginPage } from '../pages/login/login';
 import { RobotListPage } from '../pages/robot-list/robot-list';
 
@@ -35,7 +33,6 @@ export class MyApp {
 
     ];
     this.af.auth.subscribe(user => {
-      console.log(user);
       if (user) {
         this.nav.setRoot(RobotListPage, { user: user.uid });
       } else {
@@ -65,7 +62,7 @@ export class MyApp {
     this.menu.close();
     this.presentLogoutToast();
     this.authData.logoutUser();
-    this.nav.setRoot(SigninPage);
+    this.nav.setRoot(LoginPage);
   }
 
   presentLogoutToast() {

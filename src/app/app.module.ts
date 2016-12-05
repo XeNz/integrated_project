@@ -7,8 +7,6 @@ import { SettingsPage } from '../pages/settings/settings';
 import { UserPage } from '../pages/user/user';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
-import { SigninPage } from '../pages/signin/signin';
-import { SignoutPage } from '../pages/signout/signout';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { RobotListPage } from '../pages/robot-list/robot-list';
 
@@ -37,7 +35,6 @@ const myFirebaseAuthConfig = {
   declarations: [
     MyApp,
     HomePage,
-    SigninPage,
     SettingsPage,
     UserPage,
     LoginPage,
@@ -53,7 +50,6 @@ const myFirebaseAuthConfig = {
   entryComponents: [
     MyApp,
     HomePage,
-    SigninPage,
     SettingsPage,
     UserPage,
     LoginPage,
