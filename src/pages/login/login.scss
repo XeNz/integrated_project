@@ -21,7 +21,7 @@ p {
 .forgot {
     margin-top: 0px;
     margin-bottom: 4px;
-    font-size: 0.5em;
+    font-size: 0.85em;
 }
 
 ion-input {
@@ -59,7 +59,7 @@ ion-input {
   border-bottom-color: #fa6665;
   box-shadow: none;
 }
-body > ion-app > ng-component > ion-nav > page-login > ion-header > ion-navbar > div.toolbar-content.toolbar-content-md > img{
+body > ion-app > ng-component > ion-nav > page-login > ion-header > ion-navbar > div.toolbar-content > img{
     margin-left: auto;
     margin-right: auto;
     display: block;
