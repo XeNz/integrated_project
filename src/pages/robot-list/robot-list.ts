@@ -30,6 +30,10 @@ export class RobotListPage {
     message: 'Unable to connect. Please try again.',
     duration: 3000
   });
+  ipvalidateToast = this.toastCtrl.create({
+    message: 'Please provide a valid ip.',
+    duration: 3000
+  });
 
   constructor(public navCtrl: NavController, private robotListProvider: RobotListProvider, af: AngularFire, public params: NavParams, private robotProvider: RobotProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController, private menuCtrl: MenuController) {
     this.menuCtrl.enable(false);
@@ -39,7 +43,7 @@ export class RobotListPage {
   }
 
   ionViewDidLoad() {
-    
+
   }
 
   addRobotToList() {
@@ -62,13 +66,27 @@ export class RobotListPage {
         {
           text: 'Add',
           handler: data => {
-            this.robotListProvider.addRobotToList(this.user, data.robotIP);
+            if (this.validateIP(data)) {
+              this.robotListProvider.addRobotToList(this.user, data.robotIP);
+            } else {
+              this.ipvalidateToast.present();
+            }
           }
         },
       ]
     });
     prompt.present();
 
+  }
+
+  validateIP(data) {
+    var regExprIPv4 = new RegExp('/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/');
+    var regExprIPv6 = new RegExp('/^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/');
+    if (regExprIPv6.test(data) || regExprIPv4.test(data)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   presentLoading() {
@@ -114,6 +132,6 @@ export class RobotListPage {
   }
   deleteRobotIP(robotIP, key: string) {
     console.log(key);
-    this.robotListProvider.deleteRobotIP(this.user,robotIP,key);
+    this.robotListProvider.deleteRobotIP(this.user, robotIP, key);
   }
 }
