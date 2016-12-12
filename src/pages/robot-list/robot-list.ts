@@ -45,7 +45,6 @@ export class RobotListPage {
   }
 
   addRobotToList() {
-    console.log(this.user);
     let prompt = this.alertCtrl.create({
       title: 'Add a new robot IP',
       inputs: [
@@ -132,7 +131,6 @@ export class RobotListPage {
           let jibo = new Jibo(this.robotType, robotIP, this.robotProvider);
           robot = jibo;
         }
-        //console.log(robot);
         this.loader.dismissAll();
         this.navCtrl.setRoot(HomePage, { robot: robot })
       },
@@ -153,7 +151,6 @@ export class RobotListPage {
       });
   }
   deleteRobotIP(robotIP, key: string) {
-    // console.log(key);
     let prompt = this.alertCtrl.create({
       title: 'Are you sure you want to delete this IP?',
       buttons: [
