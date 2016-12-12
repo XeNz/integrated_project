@@ -35,6 +35,7 @@ export class RobotListPage {
     duration: 3000
   });
 
+
   constructor(public navCtrl: NavController, private robotListProvider: RobotListProvider, af: AngularFire, public params: NavParams, private robotProvider: RobotProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController, private menuCtrl: MenuController) {
     this.menuCtrl.enable(false);
     this.user = params.get('user');
@@ -131,7 +132,29 @@ export class RobotListPage {
       });
   }
   deleteRobotIP(robotIP, key: string) {
-    console.log(key);
-    this.robotListProvider.deleteRobotIP(this.user, robotIP, key);
+    // console.log(key);
+    let prompt = this.alertCtrl.create({
+      title: 'Are you sure you want to delete this IP?',
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Delete',
+          handler: data => {
+            this.robotListProvider.deleteRobotIP(this.user, robotIP, key);
+            var deleteRobotToast = this.toastCtrl.create({
+              message: 'Successfully deleted ' + robotIP + '.',
+              duration: 3000
+            });
+            deleteRobotToast.present();
+          }
+        },
+      ]
+    });
+    prompt.present();
   }
 }
