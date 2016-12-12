@@ -44,6 +44,7 @@ export class HomePage {
         this.robot.getActions();
 
     }
+    
 
     castRobotType() {
         if (this.robot.robotType == "NAO") {

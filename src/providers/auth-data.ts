@@ -6,7 +6,7 @@ import { AngularFire } from 'angularfire2';
 export class AuthData {
   fireAuth: any;
   constructor(public af: AngularFire) {
-    af.auth.subscribe( user => {
+    af.auth.subscribe(user => {
       if (user) { this.fireAuth = user.auth; }
     });
   }
@@ -25,5 +25,15 @@ export class AuthData {
 
   signupUser(newEmail: string, newPassword: string): any {
     return this.af.auth.createUser({ email: newEmail, password: newPassword });
+  }
+
+  deleteUser() {
+    this.af.auth
+      .subscribe(authState => {
+        console.log(authState);
+        authState.auth.delete()
+          .then(_ => console.log('deleted user!'))
+          .catch(e => console.error(e))
+      });
   }
 }

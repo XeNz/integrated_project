@@ -5,7 +5,9 @@ import { NavController, ViewController } from 'ionic-angular';
     templateUrl: 'stream-modal.html'
 })
 export class StreamPage {
-    constructor(public navCtrl: NavController, private viewCtrl: ViewController) { }
+    constructor(public navCtrl: NavController, private viewCtrl: ViewController) {
+
+     }
 
     dismiss(){
         this.viewCtrl.dismiss();

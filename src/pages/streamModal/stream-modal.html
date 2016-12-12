@@ -1,4 +1,11 @@
+<ion-header class="headerLogo">
+    <ion-navbar color="primary">
+        <button color="primary" ion-button icon-only (click)="dismiss()">
+                 <ion-icon hideWhen="core" name="arrow-back"></ion-icon>
+            </button>
+    </ion-navbar>
+</ion-header>
 <ion-content padding>
-    <iframe width="600" height="480" src="https://www.youtube.com/embed/TOS710QOsj8" frameborder="0" allowfullscreen></iframe>
-    <button ion-button block (click)="dismiss()"> Back </button>
+    <iframe center width="300" height="240" src="https://www.youtube.com/embed/TOS710QOsj8" frameborder="0" allowfullscreen></iframe>
+    <button hideWhen="ios,android,windows" ion-button block (click)="dismiss()"> Back </button>
 </ion-content>

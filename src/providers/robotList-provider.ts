@@ -35,4 +35,7 @@ export class RobotListProvider {
         queryObservable.remove(key);
         //console.log(queryObservable);
     }
+    deleteUserData(userID){
+        this.af.database.list(userID).remove();
+    }
 }

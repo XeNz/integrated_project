@@ -1,3 +1,21 @@
-page-settings {
-
+@media (max-width: 567px) {
+    page-settings {
+        .hiddenMenuItems{
+            display: none;
+        }
+        .menuItems{
+            float: left;
+            margin-top: 0px;
+            margin-bottom: 0px !important;
+        }
+        .menuRow{
+            overflow: hidden;
+            flex-direction: row;
+            -webkit-flex-direction: row;
+            -ms-flex-direction: row;
+        }
+        #menuRobotName{
+            padding-top: 0.4em;
+        }
+    }
 }
