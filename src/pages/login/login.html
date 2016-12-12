@@ -12,7 +12,6 @@
       Login
     </ion-title>
     <ion-item>
-      <!--<ion-label stacked>Email</ion-label>-->
       <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
         placeholder="Email"
         [class.invalid]="!loginForm.controls.email.valid &&
@@ -24,8 +23,7 @@
     </ion-item>
 
     <ion-item>
-      <!--<ion-label stacked>Password</ion-label>-->
-      <ion-input #password formControlName="password" type="password"
+      <ion-input id="inputpassword" #password formControlName="password" type="password"
         (change)="elementChanged(password)"
         placeholder="Password"
         [class.invalid]="!loginForm.controls.password.valid &&

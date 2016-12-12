@@ -10,17 +10,26 @@ p {
 font-size: 0.8em;
 color: #d2d2d2;
 }
-
-ion-label {
-margin-left: 5px;
-}
+    
+#createbutton {
+    margin-top: 25px;
+    font-size: 1em;
+}    
 
 ion-input {
-padding: 5px;
+    padding: 2px;
+    font-size: 0.8em;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #7F9CFC;
+}
+    
+#inputpassword {
+    margin-top: 15px;
 }
 
 .invalid {
-border-bottom: 1px solid #FF6153;
+border: 2px solid #FF6153;
 }
 
 .error-message .item-inner {
