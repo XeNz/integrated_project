@@ -11,12 +11,12 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>
+    <h1>
       Choose a robot
-    </ion-card-header>
-
-    <ion-list class = "center" *ngFor="let obj of this.robotList">
+    </h1>
+  
+    <div class = "center" *ngFor="let obj of this.robotList">
+        <ion-card>
       <button ion-item (click)="checkLogin(obj.ip)">
       {{ obj.ip }} 
       <!--maybe connect on this icon/other icon instead of the entire button idk-->
@@ -24,12 +24,15 @@
       <ion-icon name="log-in" style="padding-right:35px;" item-right ></ion-icon>
       <ion-icon name="close" item-right (click)="deleteRobotIP(obj.ip,obj.$key)"> </ion-icon>
     </button>
-
-    </ion-list>
-  </ion-card>
-
-  <ion-fab bottom right>
-    <button ion-fab mini (click)="addRobotToList()" ><ion-icon name="add"></ion-icon></button>
+</ion-card>
+    </div>
+    <ion-fab bottom center>
+    
+  
+            <button ion-fab mini (click)="addRobotToList()" ><ion-icon name="add"></ion-icon></button>
   </ion-fab>
+    
+
+ 
 
 </ion-content>
