@@ -66,9 +66,9 @@ export class RobotListPage {
           handler: data => {
             if (this.validateIP(data)) {
               this.robotProvider.getType(data.robotIP)
-                .subscribe(data => {
-                  console.log('ERROR: ' + data);
-                  this.type = data.type;
+                .subscribe(typeData => {
+                  this.type = typeData.type;
+                  this.robotListProvider.addRobotToList(this.user, data.robotIP, this.type);
                 }, error => {
                   prompt.dismiss();
                   let ipvalidateToast = this.toastCtrl.create({
@@ -80,7 +80,6 @@ export class RobotListPage {
                     ipvalidateToast.dismiss();
                   }, 2000);
                 });
-              this.robotListProvider.addRobotToList(this.user, data.robotIP, this.type);
             } else {
               let ipvalidateToast = this.toastCtrl.create({
                 message: 'Please provide a valid ip.',
