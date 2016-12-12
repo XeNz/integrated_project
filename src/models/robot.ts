@@ -28,7 +28,6 @@ export class Robot {
         this.robotProvider.getName(this.robotIP, this.robotType).subscribe(
             data => {
                 this.robotName = data.name;
-                console.log(this.robotName);
             },
             err => {
                 console.log(err)
@@ -41,7 +40,6 @@ export class Robot {
         this.robotProvider.getBatteryLevel(this.robotIP).subscribe(
             data => {
                 this.batteryLevel = data.level;
-                console.log(this.batteryLevel);
 
             },
             err => {
@@ -83,7 +81,6 @@ export class Robot {
             data => {
                 this.actions = data.actions;
                 this.postureActions = data.postureActions;
-                console.log(data);
             },
             err => {
                 console.log(err);

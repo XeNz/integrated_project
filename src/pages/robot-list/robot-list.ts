@@ -168,10 +168,10 @@ export class RobotListPage {
               duration: 3000
             });
             deleteRobotToast.present();
-            setTimeout(function() {
+            setTimeout(function () {
               deleteRobotToast.dismiss();
             }, 2000);
-            
+
           }
         },
       ]
