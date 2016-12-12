@@ -7,7 +7,7 @@
 <ion-header class="headerLogo">
   <ion-navbar>
     <ion-title>
-        Choose a robot
+      Choose a robot
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -18,15 +18,24 @@
   </h1>
 
   <div class="center" *ngFor="let obj of this.robotList">
-    <ion-card>
-      <button ion-item>
-      {{ obj.ip }} 
-      <!--maybe connect on this icon/other icon instead of the entire button idk-->
-      <!--added bogus style tag to test-->
-      <ion-icon name="log-in" style="padding-right:35px;" item-right (click)="checkLogin(obj.ip)"></ion-icon>
-      <ion-icon name="close" item-right (click)="deleteRobotIP(obj.ip,obj.$key)"> </ion-icon>
-    </button>
-    </ion-card>
+    <ion-list>
+      <ion-item-sliding>
+        <ion-item (click)="checkLogin(obj.ip)">
+          <ion-avatar item-left>
+            <img *ngIf="obj.type == 'NAO' "src="../../assets/images/nao.png">
+            <img *ngIf="obj.type == 'PEPPER' "src="../../assets/images/pepper.png">
+            <img *ngIf="obj.type == 'JIBO' "src="../../assets/images/jibo.png">
+          </ion-avatar>
+          <h2>{{ obj.ip }}</h2>
+        </ion-item>
+        <ion-item-options side="right">
+          <button ion-button color="primary" (click)="deleteRobotIP(obj.ip,obj.$key)">
+            <ion-icon name="delete"></ion-icon>
+            Delete
+        </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
   </div>
   <ion-fab bottom center>
 
