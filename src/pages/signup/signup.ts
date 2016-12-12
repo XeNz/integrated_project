@@ -5,6 +5,7 @@ import { AuthData } from '../../providers/auth-data';
 import { EmailValidator } from '../../validators/email';
 import { HomePage } from '../home/home';
 import { RobotListPage } from '../robot-list/robot-list';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-signup',
@@ -15,6 +16,7 @@ export class SignupPage {
   emailChanged: boolean = false;
   passwordChanged: boolean = false;
   submitAttempt: boolean = false;
+  user: any;
   loading;
 
   constructor(public nav: NavController, public authData: AuthData,
@@ -50,7 +52,13 @@ export class SignupPage {
       console.log(this.signupForm.value);
     } else {
       this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password).then(() => {
-        this.nav.setRoot(RobotListPage);
+        // userid scope issue fix
+        this.authData.af.auth.subscribe(user => {
+          if (user) {
+            this.user = user.uid;
+           }
+        });
+        this.nav.setRoot(LoginPage, { user: this.user });
       }, (error) => {
         this.loading.dismiss().then(() => {
           var errorMessage: string = error.message;
