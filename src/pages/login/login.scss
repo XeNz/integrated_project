@@ -1,12 +1,14 @@
 page-login {
 form {
-    margin-bottom: 32px;
-
-button {
-    margin: 25px;
-    font-size: 3em;
-    width: 80%;
+    margin: 0 auto;
+    
 }
+    
+.buttonwrapper {
+    text-align: center;
+    margin: 0 auto;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
 }
 
 p {
@@ -30,6 +32,13 @@ ion-input {
     border-width: 2px;
     border-style: solid;
     border-color: #7F9CFC;
+}
+    
+.wrapper {
+    text-align: center;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0.55em;
 }
     
 #inputpassword {
