@@ -25,12 +25,15 @@ p {
 }
 
 ion-input {
-    margin-top: 5px;
     padding: 2px;
     font-size: 0.8em;
     border-width: 2px;
     border-style: solid;
     border-color: #7F9CFC;
+}
+    
+#inputpassword {
+    margin-top: 15px;
 }
 
 .invalid {
@@ -43,20 +46,20 @@ ion-input {
 
 }
 .item-md.item-block .item-inner{
-    border-bottom: 0px;
+    border: 0px;
 }
 .ion-item.item-block.item.item-md.item-input.ng-pristine.ng-invalid.ng-touched{
     box-shadow: none;
 }
 .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner{
-    border-bottom: 0px;
+    border: 0px;
     box-shadow: none;
 }
 .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner{
     box-shadow: none;
 }
 .item-md.item-input.input-has-focus .item-inner {
-  border-bottom-color: #fa6665;
+  border-color: #fa6665;
   box-shadow: none;
 }
 body > ion-app > ng-component > ion-nav > page-login > ion-header > ion-navbar > div.toolbar-content > img{
