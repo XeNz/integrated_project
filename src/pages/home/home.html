@@ -24,99 +24,82 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-grid>
-        <ion-row responsive-sm>
-          <ion-col width-30 offset-10>
-              <ion-card>
-                <ion-card-header>
-                  Actions
-                </ion-card-header>
-
-                <ion-list>
-                  <ion-item>
-                    <ion-icon name="hand" item-left></ion-icon>
-                    <ion-label> Wave hands </ion-label>
-                    <ion-toggle checked="false"></ion-toggle>
-                  </ion-item>
-
-                  <ion-item>
-                    <ion-icon name="football" item-left></ion-icon>
-                    <ion-label> Soccer demo </ion-label>
-                    <ion-toggle checked="false"></ion-toggle>
-                  </ion-item>
-
-                  <ion-item>
-                    <ion-icon name="musical-notes" item-left></ion-icon>
-                    <ion-label> Dance macarena </ion-label>
-                    <ion-toggle checked="false"></ion-toggle>
-                  </ion-item>
-                   <!-- include weird buttons -->
-                </ion-list>
-              </ion-card>
-          </ion-col>
-
-          <ion-col width-30 offset-10>
-           <ion-card>
-            <ion-card-header>
-              Volume
-            </ion-card-header>
-
-            <ion-item>
-              <ion-range min="0" max="100" step="5" snaps="true"  [(ngModel)]="volume">
-                <ion-icon range-left small name="volume-down"></ion-icon>
-                <ion-icon range-right name="volume-up"></ion-icon>
-              </ion-range>
-            </ion-item>
-
-          </ion-card>
-        </ion-col>
-
-      <ion-col width-30 offset-10>
-       <ion-card>
-        <ion-card-header>
-          Say
-        </ion-card-header>
-
-        <ion-item>
-          <!-- Note that <ion-textarea> must load its value from the value or [(ngModel)] attribute. Unlike the native <textarea> element, <ion-textarea> does not support loading its value from the textarea's inner content. -->
-          <ion-textarea [(ngModel)]="text" name="text"></ion-textarea>
-          <!-- ??? -->
-        </ion-item>
-        <ion-item>
-          <button ion-button (click)="ask(this.text)">Play</button>
-        </ion-item>
-
-      </ion-card>
+  <ion-grid>
+    <ion-row responsive-sm>
+      <ion-col width-30></ion-col>
+      <ion-col *ngFor="let act of this.robot.postureActions" id="actionColumn">
+            <button ion-button block (click)="this.robot.action(this.act)">{{ act }}</button>        
       </ion-col>
-      <ion-col width-30 offset-10>
-       <ion-card>
-        <ion-card-header>
-          Move
-        </ion-card-header>
-
-        <ion-item>
-          <!-- Note that <ion-textarea> must load its value from the value or [(ngModel)] attribute. Unlike the native <textarea> element, <ion-textarea> does not support loading its value from the textarea's inner content. -->
-          <ion-input [(ngModel)]="moveCoordinateX" name="moveCoordinateX" placeholder="x"></ion-input>
-          <ion-input [(ngModel)]="moveCoordinateY" name="moveCoordinateY" placeholder="y"></ion-input>
-          <ion-input [(ngModel)]="moveCoordinateD" name="moveCoordinateD" placeholder="d"></ion-input>
-          <!-- ??? -->
-        </ion-item>
-        <ion-item>
-          <button ion-button (click)="move(this.moveCoordinateX, this.moveCoordinateY, this.moveCoordinateD)">Move</button>
-        </ion-item>
-
-      </ion-card>
-      </ion-col>
+      <ion-col width-30></ion-col>      
     </ion-row>
     <ion-row responsive-sm>
-        <ion-col>
-            <ion-card>
-                <ion-item *ngFor="let act of this.robot.postureActions">
-                    <button ion-button (click)="this.robot.action(this.act)">{{ act }}</button>
-              </ion-item>
-          </ion-card>
+      <ion-col width-30></ion-col>
+      <ion-col width-30>
+        <ion-card>
+          <ion-card-header>
+            Volume
+          </ion-card-header>
+          <ion-item>
+            <ion-range min="0" max="100" step="5" snaps="true" [(ngModel)]="volume">
+              <ion-icon range-left small name="volume-down"></ion-icon>
+              <ion-icon range-right name="volume-up"></ion-icon>
+            </ion-range>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+      <ion-col width-30></ion-col>
+    </ion-row>
+    <ion-row responsive-sm>
+      <ion-col width-30></ion-col>        
+      <ion-col width-30>
+        <ion-card>
+          <ion-card-header>
+            Say
+          </ion-card-header>
+          <ion-item>
+            <!-- Note that <ion-textarea> must load its value from the value or [(ngModel)] attribute. Unlike the native <textarea> element, <ion-textarea> does not support loading its value from the textarea's inner content. -->
+            <ion-textarea [(ngModel)]="text" name="text"></ion-textarea>
+            <!-- ??? -->
+          </ion-item>
+          <ion-item>
+            <button ion-button (click)="this.robot.ask(this.text)">Play</button>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+      <ion-col width-30></ion-col>
+    </ion-row>      
+    <ion-row responsive-sm>
+      <ion-col width-30></ion-col>    
+      <ion-col width-30>
+        <ion-card>
+          <ion-card-header>
+            Move
+          </ion-card-header>
+          <ion-item>
+            <!-- Note that <ion-textarea> must load its value from the value or [(ngModel)] attribute. Unlike the native <textarea> element, <ion-textarea> does not support loading its value from the textarea's inner content. -->
+            <ion-input [(ngModel)]="moveCoordinateX" name="moveCoordinateX" placeholder="x"></ion-input>
+            <ion-input [(ngModel)]="moveCoordinateY" name="moveCoordinateY" placeholder="y"></ion-input>
+            <ion-input [(ngModel)]="moveCoordinateD" name="moveCoordinateD" placeholder="d"></ion-input>
+            <!-- ??? -->
+          </ion-item>
+          <ion-item>
+            <button ion-button (click)="this.robot.move(this.moveCoordinateX, this.moveCoordinateY, this.moveCoordinateD)">Move</button>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+      <ion-col width-30></ion-col>      
+    </ion-row>
+    <ion-row responsive-sm>
+      <ion-col>
+        <ion-card *ngFor="let act of this.robot.postureActions">
+          <ion-card-header>
+            {{ act }}
+          </ion-card-header>
+          <ion-item>
+          </ion-item>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
   <iframe width="380" height="360" src="https://www.youtube.com/embed/Hp821c75lIo" frameborder="0" allowfullscreen></iframe>
-  </ion-content>
+</ion-content>
