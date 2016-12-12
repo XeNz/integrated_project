@@ -37,11 +37,10 @@ export class RobotListPage {
     this.menuCtrl.enable(false);
     this.user = params.get('user');
     this.af = af;
-    this.getRobotList();
   }
 
   ionViewDidLoad() {
-
+    this.getRobotList();
   }
 
   addRobotToList() {
