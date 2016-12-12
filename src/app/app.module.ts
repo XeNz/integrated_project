@@ -9,6 +9,7 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 import { RobotListPage } from '../pages/robot-list/robot-list';
+import { StreamPage } from '../pages/streamModal/stream-modal';
 
 import { RobotProvider } from '../providers/robot-provider'
 import { RobotListProvider } from '../providers/robotList-provider'
@@ -40,7 +41,8 @@ const myFirebaseAuthConfig = {
     LoginPage,
     SignupPage,
     ResetPasswordPage,
-    RobotListPage
+    RobotListPage,
+    StreamPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -55,7 +57,8 @@ const myFirebaseAuthConfig = {
     LoginPage,
     SignupPage,
     ResetPasswordPage,
-    RobotListPage
+    RobotListPage,
+    StreamPage
   ],
   providers: [RobotProvider,AuthData,RobotListProvider]
 })
