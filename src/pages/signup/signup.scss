@@ -14,7 +14,21 @@ color: #d2d2d2;
 #createbutton {
     margin-top: 25px;
     font-size: 1em;
-}    
+}  
+
+.wrapper {
+    text-align: center;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0.55em;
+}
+    
+.buttonwrapper {
+    text-align: center;
+    margin: 0 auto;
+    padding-left: 1.2em;
+    padding-right: 1.2em;
+}
 
 ion-input {
     padding: 2px;

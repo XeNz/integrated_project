@@ -11,6 +11,7 @@
 <ion-title>
       Login
     </ion-title>
+    <div class="wrapper">
     <ion-item>
       <ion-input #email formControlName="email" type="email" (change)="elementChanged(email)"
         placeholder="Email"
@@ -33,20 +34,23 @@
       (passwordChanged || submitAttempt)">
       <p>Your password needs more than 6 characters.</p>
     </ion-item>
-      
-    <button class="forgot" ion-button block clear (click)="goToResetPassword()">
-        Forgot your email or password?
-    </button>
-
-    <button ion-button block color="primary" type="submit">
-      Login
-    </button>
-      
-    <p class="or">or</p>
+    </div>
+    
+    <div class="buttonwrapper">
+        <button class="forgot" ion-button block clear (click)="goToResetPassword()">
+            Forgot your email or password?
+        </button>
+        <button ion-button block color="primary" type="submit">
+          Login
+        </button>
+         <p class="or">or</p>
 
     <button ion-button block color="secondary" (click)="createAccount()">
         Sign up
     </button>
+    </div>
+      
+   
 
   </form>
 
