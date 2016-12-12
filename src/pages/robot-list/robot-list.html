@@ -6,15 +6,14 @@
 -->
 <ion-header class="headerLogo">
   <ion-navbar>
-    <img src="../../assets/images/RobotRemoteNaamLogo.png">
+    <ion-title>
+        Choose a robot
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <h1>
-      Choose a robot
-    </h1>
-  
+    
     <div class = "center" *ngFor="let obj of this.robotList">
         <ion-card>
       <button ion-item (click)="checkLogin(obj.ip)">
