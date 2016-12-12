@@ -64,10 +64,13 @@ export class RobotListPage {
         {
           text: 'Add',
           handler: data => {
+            // Check if input is a valid IPv4 or IPv6 address
             if (this.validateIP(data)) {
+              // Get the robot type
               this.robotProvider.getType(data.robotIP)
                 .subscribe(typeData => {
                   this.type = typeData.type;
+                  // Add robot to list
                   this.robotListProvider.addRobotToList(this.user, data.robotIP, this.type);
                 }, error => {
                   prompt.dismiss();
