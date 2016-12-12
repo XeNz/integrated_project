@@ -37,6 +37,12 @@ export class RobotProvider {
       return response;
   }
 
+  getType(robotIP) {
+      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getType';
+      var response = this.http.get(url).map(res => res.json());
+      return response;
+  }
+
   ask(robotIP, text){
       var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/ask/' + text;
       var response = this.http.get(url).map(res => res.json());

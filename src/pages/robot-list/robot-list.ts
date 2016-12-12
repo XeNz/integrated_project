@@ -21,6 +21,7 @@ export class RobotListPage {
   robotList: any[];
   af: AngularFire;
   user: any;
+  type: any;
   robotIP = null;
   robotType: any;
   loader = this.loadingCtrl.create({
@@ -28,10 +29,6 @@ export class RobotListPage {
   });
   errorToast = this.toastCtrl.create({
     message: 'Unable to connect. Please try again.',
-    duration: 3000
-  });
-  ipvalidateToast = this.toastCtrl.create({
-    message: 'Please provide a valid ip.',
     duration: 3000
   });
 
@@ -68,9 +65,31 @@ export class RobotListPage {
           text: 'Add',
           handler: data => {
             if (this.validateIP(data)) {
-              this.robotListProvider.addRobotToList(this.user, data.robotIP);
+              this.robotProvider.getType(data.robotIP)
+                .subscribe(data => {
+                  console.log('ERROR: ' + data);
+                  this.type = data.type;
+                }, error => {
+                  prompt.dismiss();
+                  let ipvalidateToast = this.toastCtrl.create({
+                    message: 'Cannot connect to ip.',
+                    duration: 3000
+                  });
+                  ipvalidateToast.present();
+                  setTimeout(function () {
+                    ipvalidateToast.dismiss();
+                  }, 2000);
+                });
+              this.robotListProvider.addRobotToList(this.user, data.robotIP, this.type);
             } else {
-              this.ipvalidateToast.present();
+              let ipvalidateToast = this.toastCtrl.create({
+                message: 'Please provide a valid ip.',
+                duration: 3000
+              });
+              ipvalidateToast.present();
+              setTimeout(function () {
+                ipvalidateToast.dismiss();
+              }, 2000);
             }
           }
         },
@@ -81,9 +100,9 @@ export class RobotListPage {
   }
 
   validateIP(data) {
-    var regExprIPv4 = new RegExp('/^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/');
-    var regExprIPv6 = new RegExp('/^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$/');
-    if (regExprIPv6.test(data) || regExprIPv4.test(data)) {
+    var regExprIPv4 = new RegExp('^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$');
+    var regExprIPv6 = new RegExp('^(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))$');
+    if (regExprIPv4.test(data.robotIP) || regExprIPv6.test(data.robotIP)) {
       return true;
     } else {
       return false;

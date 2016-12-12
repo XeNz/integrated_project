@@ -10,10 +10,11 @@ export class RobotListProvider {
         this.af = af;
     }
 
-    addRobotToList(userID, ip) {
+    addRobotToList(userID, ip, type) {
         let robotList = this.af.database.list(userID + '/robotList/');
         robotList.push({
-            ip: ip
+            ip: ip,
+            type: type
         });
     }
 
