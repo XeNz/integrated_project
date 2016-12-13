@@ -59,17 +59,25 @@ ion-input {
 }
 .ion-item.item-block.item.item-md.item-input.ng-pristine.ng-invalid.ng-touched{
     box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
 }
 .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner{
     border: 0px;
     box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
 }
 .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner{
     box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
 }
 .item-md.item-input.input-has-focus .item-inner {
-  border-color: #fa6665;
-  box-shadow: none;
+    border-color: #fa6665;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
 }
 body > ion-app > ng-component > ion-nav > page-login > ion-header > ion-navbar > div.toolbar-content > img{
     margin-left: auto;
