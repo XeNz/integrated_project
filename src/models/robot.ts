@@ -42,12 +42,10 @@ export class Robot {
         this.robotProvider.getBatteryLevel(this.robotIP).subscribe(
             data => {
                 this.batteryLevel = data.level;
-
             },
             err => {
                 console.log(err)
             });
-
     }
 
 
