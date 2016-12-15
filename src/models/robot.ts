@@ -9,6 +9,7 @@ export class Robot {
     actions: any;
     postureActions: any
     age: number;
+    volume: number;
 
     constructor(robotType, robotIP, robotProvider) {
         //TODO: implement constructor
@@ -92,6 +93,16 @@ export class Robot {
         this.robotProvider.guessAge(this.robotIP).subscribe(
             data => {
                 this.age = data.age;
+            },
+            err => {
+                console.log(err);
+            });
+    }
+
+    getVolume() {
+        this.robotProvider.getVolume(this.robotIP).subscribe(
+            data => {
+                this.volume = data.volume;
             },
             err => {
                 console.log(err);

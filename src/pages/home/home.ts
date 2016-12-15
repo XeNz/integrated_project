@@ -43,7 +43,7 @@ export class HomePage {
         //repeat
         this.robot.repeatCheckBatteryLevel();
         this.robot.getActions();
-
+        this.robot.getVolume();
     }
 
 

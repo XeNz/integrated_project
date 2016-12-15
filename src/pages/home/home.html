@@ -53,7 +53,7 @@
       <ion-col width-30>
         <ion-card>
           <ion-card-header>
-            Volume
+            Volume {{ robot?.volume }}
           </ion-card-header>
           <ion-item>
             <ion-range min="0" max="100" step="5" snaps="true" [(ngModel)]="volume">

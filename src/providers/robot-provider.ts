@@ -11,65 +11,71 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class RobotProvider {
 
-  robotPort: string = ":5000";
+    robotPort: string = ":5000";
 
-  constructor(public http: Http) {
-  }
+    constructor(public http: Http) {
+    }
 
-  //
-  //https://codybonney.com/allow-cross-origin-resource-sharing-cors-using-flask/
-  //
-  signIn(robotIP) {
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getType';
-      var response = this.http.get(url).map(res => res.json());
-      return response;
-  }
+    //
+    //https://codybonney.com/allow-cross-origin-resource-sharing-cors-using-flask/
+    //
+    signIn(robotIP) {
+        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getType';
+        var response = this.http.get(url).map(res => res.json());
+        return response;
+    }
 
-  getBatteryLevel(robotIP) {
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getBatteryLevel';
-      var response = this.http.get(url).map(res => res.json());
-      return response;
-  }
+    getBatteryLevel(robotIP) {
+        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getBatteryLevel';
+        var response = this.http.get(url).map(res => res.json());
+        return response;
+    }
 
-  guessAge(robotIP){
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/guessAge';
-      var response = this.http.get(url).map(res => res.json());
-      return response;
-  }
+    guessAge(robotIP) {
+        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/guessAge';
+        var response = this.http.get(url).map(res => res.json());
+        return response;
+    }
 
-  getName(robotIP, robotType) {
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getName/' + robotType;
-      var response = this.http.get(url).map(res => res.json());
-      return response;
-  }
+    getName(robotIP, robotType) {
+        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getName/' + robotType;
+        var response = this.http.get(url).map(res => res.json());
+        return response;
+    }
 
-  getType(robotIP) {
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getType';
-      var response = this.http.get(url).map(res => res.json());
-      return response;
-  }
+    getType(robotIP) {
+        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getType';
+        var response = this.http.get(url).map(res => res.json());
+        return response;
+    }
 
-  ask(robotIP, text){
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/ask/' + text;
-      var response = this.http.get(url).map(res => res.json());
-      return response;
-  }
+    ask(robotIP, text) {
+        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/ask/' + text;
+        var response = this.http.get(url).map(res => res.json());
+        return response;
+    }
 
-  action(robotIP, action){
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/actions/' + action;
-      var response = this.http.get(url).map(res => res.json());
-      return response;
-  }
+    action(robotIP, action) {
+        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/actions/' + action;
+        var response = this.http.get(url).map(res => res.json());
+        return response;
+    }
 
-  getActions(robotIP,robotType){
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getActions/' + robotType;
-      var response = this.http.get(url).map(res => res.json());
-      return response;
-  }
+    getActions(robotIP, robotType) {
+        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getActions/' + robotType;
+        var response = this.http.get(url).map(res => res.json());
+        return response;
+    }
 
-  move(robotIP, x, y, d){
-      var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/move/' + x + '/' + y + '/' + d;
-      var response = this.http.get(url).map(res => res.json());
-      return response;
-  }
+    getVolume(robotIP) {
+        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getActions';
+        var response = this.http.get(url).map(res => res.json());
+        return response;
+    }
+
+    move(robotIP, x, y, d) {
+        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/move/' + x + '/' + y + '/' + d;
+        var response = this.http.get(url).map(res => res.json());
+        return response;
+    }
 }
