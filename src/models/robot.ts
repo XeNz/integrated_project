@@ -8,6 +8,7 @@ export class Robot {
     batteryLevel: any;
     actions: any;
     postureActions: any
+    age: number;
 
     constructor(robotType, robotIP, robotProvider) {
         //TODO: implement constructor
@@ -81,6 +82,16 @@ export class Robot {
             data => {
                 this.actions = data.actions;
                 this.postureActions = data.postureActions;
+            },
+            err => {
+                console.log(err);
+            });
+    }
+
+    guessAge() {
+        this.robotProvider.guessAge(this.robotIP).subscribe(
+            data => {
+                this.age = data.age;
             },
             err => {
                 console.log(err);

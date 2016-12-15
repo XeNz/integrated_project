@@ -6,6 +6,7 @@ import { Pepper } from '../../models/pepper'
 import { Nao } from '../../models/nao'
 import { Jibo } from '../../models/jibo'
 import { StreamPage } from '../streamModal/stream-modal'
+import { GuessAgeModalPage } from '../guess-age-modal/guess-age-modal'
 
 @Component({
     selector: 'page-home',
@@ -44,7 +45,7 @@ export class HomePage {
         this.robot.getActions();
 
     }
-    
+
 
     castRobotType() {
         if (this.robot.robotType == "NAO") {
@@ -61,5 +62,10 @@ export class HomePage {
     presentStream() {
         let streamPage = this.modalController.create(StreamPage);
         streamPage.present();
+    }
+
+    presentGuessAge() {
+        let guessAgePage = this.modalController.create(GuessAgeModalPage, this.robot);
+        guessAgePage.present();
     }
 }
