@@ -1,4 +1,4 @@
-import { NavController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
@@ -19,9 +19,11 @@ export class SignupPage {
   user: any;
   loading;
 
+
+
   constructor(public nav: NavController, public authData: AuthData,
     public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController, public toastCtrl: ToastController) {
 
     this.signupForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required,
@@ -57,7 +59,16 @@ export class SignupPage {
           if (user) {
             this.user = user.uid;
             console.log(user);
-           }
+            // present toast
+            var accountCreatedToast = this.toastCtrl.create({
+              message: 'Successfully created account.',
+              duration: 3000
+            });
+            accountCreatedToast.present();
+            setTimeout(function () {
+              accountCreatedToast.dismiss();
+            }, 2000);
+          }
         });
         this.nav.setRoot(RobotListPage, { user: this.user });
       }, (error) => {
