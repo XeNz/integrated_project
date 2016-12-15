@@ -44,7 +44,7 @@ export class SettingsPage {
                 this.robotListProvider.deleteUserData(userId);
                 //delete user & expire session
                 this.authData.deleteUser();
-                this.authData.af.auth.logout();
+                this.authData.logoutUser();
                 //redirect
                 this.navCtrl.setRoot(LoginPage);
                 let deleteToast = this.toastCtrl.create({
@@ -53,10 +53,10 @@ export class SettingsPage {
                 });
                 deleteToast.present();
                 // need to unsubscribe to list somehow
-              }else{
+              } else {
                 console.error("error deleting");
               }
-            }).unsubscribe();
+            });
           }
         }
       ]

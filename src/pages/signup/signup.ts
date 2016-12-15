@@ -56,9 +56,10 @@ export class SignupPage {
         this.authData.af.auth.subscribe(user => {
           if (user) {
             this.user = user.uid;
+            console.log(user);
            }
         });
-        this.nav.setRoot(LoginPage, { user: this.user });
+        this.nav.setRoot(RobotListPage, { user: this.user });
       }, (error) => {
         this.loading.dismiss().then(() => {
           var errorMessage: string = error.message;
