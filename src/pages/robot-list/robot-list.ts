@@ -70,6 +70,7 @@ export class RobotListPage {
                   this.type = typeData.type;
                   // Add robot to list
                   this.robotListProvider.addRobotToList(this.user, data.robotIP, this.type);
+                  this.getRobotList();
                 }, error => {
                   prompt.dismiss();
                   let ipvalidateToast = this.toastCtrl.create({
@@ -144,10 +145,12 @@ export class RobotListPage {
   }
 
   getRobotList() {
-    this.robotListProvider.getRobotList(this.user)
+    var list = this.robotListProvider.getRobotList(this.user)
       .subscribe(data => {
         this.robotList = data;
+        list.unsubscribe();
       });
+    
   }
   deleteRobotIP(robotIP, key: string) {
     let prompt = this.alertCtrl.create({
