@@ -7,7 +7,6 @@ import { AuthData } from '../providers/auth-data';
 
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
-import { UserPage } from '../pages/user/user';
 import { LoginPage } from '../pages/login/login';
 import { RobotListPage } from '../pages/robot-list/robot-list';
 import { StreamPage } from '../pages/streamModal/stream-modal';
@@ -29,7 +28,6 @@ export class MyApp {
     this.af = af;
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'User', component: UserPage },
       { title: 'Settings', component: SettingsPage },
 
     ];

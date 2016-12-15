@@ -4,7 +4,6 @@ import { MyApp } from './app.component';
 
 import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
-import { UserPage } from '../pages/user/user';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password';
@@ -39,7 +38,6 @@ const myFirebaseAuthConfig = {
     MyApp,
     HomePage,
     SettingsPage,
-    UserPage,
     LoginPage,
     SignupPage,
     ResetPasswordPage,
@@ -56,7 +54,6 @@ const myFirebaseAuthConfig = {
     MyApp,
     HomePage,
     SettingsPage,
-    UserPage,
     LoginPage,
     SignupPage,
     ResetPasswordPage,

@@ -67,8 +67,9 @@ export class RobotProvider {
         return response;
     }
 
+    // Doesn't work with virtual robot
     getVolume(robotIP) {
-        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getActions';
+        var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getVolume';
         var response = this.http.get(url).map(res => res.json());
         return response;
     }
