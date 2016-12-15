@@ -40,7 +40,7 @@ export class RobotListProvider {
         //console.log(queryObservable);
     }
 
-    // Removes the current user from the AngularFire database
+    // Removes the current user data from the AngularFire database
     deleteUserData(userID){
         this.af.database.list(userID).remove();
     }
