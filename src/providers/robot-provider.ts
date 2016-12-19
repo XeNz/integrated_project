@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/retry';
+import 'rxjs/add/operator/timeout';
+import 'rxjs/add/operator/delay';
 
 /*
   Generated class for the RobotProvider provider.
@@ -50,7 +53,7 @@ export class RobotProvider {
     // Is a random generated number at the moment
     getType(robotIP) {
         var url = 'http://' + encodeURI(robotIP) + this.robotPort + '/getType';
-        var response = this.http.get(url).map(res => res.json());
+        var response = this.http.get(url).timeout(3000).map(res => res.json());
         return response;
     }
 
