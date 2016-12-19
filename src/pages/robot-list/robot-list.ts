@@ -166,6 +166,7 @@ export class RobotListPage {
           text: 'Delete',
           handler: data => {
             this.robotListProvider.deleteRobotIP(this.user, robotIP, key);
+            this.getRobotList();
             var deleteRobotToast = this.toastCtrl.create({
               message: 'Successfully deleted ' + robotIP + '.',
               duration: 3000
