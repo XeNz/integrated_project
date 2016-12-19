@@ -52,10 +52,16 @@ export class MyApp {
   }
 
   openPage(page) {
-    this.menu.close();
-    this.nav.push(page.component);
+    console.log(page.component);
+    if (this.nav.getActive().name == "HomePage" && page.title == "Home") {
+      this.menu.close();
+    }
+    else {
+      this.menu.close();
+      this.nav.push(page.component);
+    }
   }
-  
+
   signOut() {
     //clear session, close menu, redirect
     this.menu.close();
@@ -71,9 +77,9 @@ export class MyApp {
     });
     toast.present();
   }
-  connectToOtherRobot(){
+  connectToOtherRobot() {
     this.menu.close();
-        this.af.auth.subscribe(user => {
+    this.af.auth.subscribe(user => {
       if (user) {
         this.nav.setRoot(RobotListPage, { user: user.uid });
       } else {
