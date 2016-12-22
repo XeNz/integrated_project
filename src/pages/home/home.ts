@@ -28,6 +28,7 @@ export class HomePage {
     public robotName: any;
     public batteryLevel: any;
     public actions: any;
+    public numberOfActions: number;
 
 
     public robot: Robot;
@@ -43,6 +44,7 @@ export class HomePage {
         //repeat
         this.robot.repeatCheckBatteryLevel();
         this.robot.getActions();
+        this.numberOfActions = this.robot.action.length;
         // this.robot.getVolume();
     }
 

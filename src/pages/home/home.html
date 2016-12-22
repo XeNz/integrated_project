@@ -25,28 +25,28 @@
 
 <ion-content padding>
   <ion-grid>
-    <ion-row responsive-sm>
-      <ion-col width-30></ion-col>
-      <div *ngFor="let act of this.robot.postureActions; let i = index" id="actionColumn">
-        <ion-col width-15>
-          <button *ngIf="i % 2 == 0" ion-button block (click)="this.robot.action(this.act)">{{ act }}</button>
-        </ion-col>
-        <ion-col width-15>
-          <button *ngIf="i % 2 == 1" ion-button block (click)="this.robot.action(this.act)">{{ act }}</button>
-        </ion-col>
-        <ion-col width-30></ion-col>
+    <!-- Loop over every action of the action list -->
+    <div *ngFor="let act of this.robot.postureActions; let i = index" id="actionColumn">
+      <!-- do nothing if the index is greater than half of the length of the action list -->
+      <div *ngIf="i < (this.robot.postureActions.length/2)">
+        <ion-row responsive-sm>
+          <ion-col width-30></ion-col>
+          <ion-col width-30>
+            <button ion-button block (click)="this.robot.action(this.act)"> {{ this.robot.postureActions[i] }}</button>
+          </ion-col>
+          <ion-col width-30>
+            <button ion-button block (click)="this.robot.action(this.act)">{{ this.robot.postureActions[(this.robot.postureActions.length/2 + i)] }}</button>
+          </ion-col>
+          <ion-col width-30></ion-col>
+        </ion-row>
       </div>
-    </ion-row>
+    </div>
     <ion-row responsive-sm>
       <ion-col width-30></ion-col>
-      <ion-col width-30>
+      <ion-col width-15>
         <button ion-button block (click)="presentStream()"> STREAM </button>
       </ion-col>
-      <ion-col width-30></ion-col>
-    </ion-row>
-    <ion-row responsive-sm>
-      <ion-col width-30></ion-col>
-      <ion-col width-30>
+      <ion-col width-15>
         <button ion-button block (click)="presentGuessAge()"> GUESS AGE </button>
       </ion-col>
       <ion-col width-30></ion-col>
