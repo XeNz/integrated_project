@@ -27,26 +27,29 @@
   <ion-grid>
     <ion-row responsive-sm>
       <ion-col width-30></ion-col>
-      <ion-col width-30>
-        <div *ngFor="let act of this.robot.postureActions" id="actionColumn">
-          <button ion-button block (click)="this.robot.action(this.act)">{{ act }}</button>
-        </div>
-      </ion-col>
-      <ion-col width-30></ion-col>
+      <div *ngFor="let act of this.robot.postureActions; let i = index" id="actionColumn">
+        <ion-col width-15>
+          <button *ngIf="i % 2 == 0" ion-button block (click)="this.robot.action(this.act)">{{ act }}</button>
+        </ion-col>
+        <ion-col width-15>
+          <button *ngIf="i % 2 == 1" ion-button block (click)="this.robot.action(this.act)">{{ act }}</button>
+        </ion-col>
+        <ion-col width-30></ion-col>
+      </div>
     </ion-row>
     <ion-row responsive-sm>
       <ion-col width-30></ion-col>
       <ion-col width-30>
         <button ion-button block (click)="presentStream()"> STREAM </button>
       </ion-col>
-      <ion-col width-30></ion-col>      
+      <ion-col width-30></ion-col>
     </ion-row>
     <ion-row responsive-sm>
       <ion-col width-30></ion-col>
       <ion-col width-30>
         <button ion-button block (click)="presentGuessAge()"> GUESS AGE </button>
       </ion-col>
-      <ion-col width-30></ion-col>      
+      <ion-col width-30></ion-col>
     </ion-row>
     <ion-row responsive-sm>
       <ion-col width-30></ion-col>
