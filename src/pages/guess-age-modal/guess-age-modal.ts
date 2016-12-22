@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, ViewController, NavParams } from 'ionic-angular';
-import { RobotProvider } from '../../providers/robot-provider'
 import { Robot } from '../../models/robot';
 
 

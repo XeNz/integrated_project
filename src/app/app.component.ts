@@ -9,7 +9,6 @@ import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
 import { LoginPage } from '../pages/login/login';
 import { RobotListPage } from '../pages/robot-list/robot-list';
-import { StreamPage } from '../pages/streamModal/stream-modal';
 
 
 @Component({
