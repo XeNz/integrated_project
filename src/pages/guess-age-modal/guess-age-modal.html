@@ -1,7 +1,7 @@
 <ion-header class="headerLogo">
     <ion-navbar color="primary">
-        <button color="primary" ion-button icon-only (click)="dismiss()">
-                 <ion-icon hideWhen="core" name="arrow-back"></ion-icon>
+        <button hideWhen="core" class="backbutton" color="primary" ion-button icon-only (click)="dismiss()">
+                 <ion-icon name="arrow-back"></ion-icon>
             </button>
     </ion-navbar>
 </ion-header>
@@ -9,5 +9,5 @@
     <img src="./assets/images/RobotRemoteLogo-01.png" alt="roboto">
     <p *ngIf="age">Age: {{ age }}</p>
     <button ion-button block (click)="guessAge()"> Guess Age </button>
-    <button ion-button block (click)="dismiss()"> Back </button>
+    <button hideWhen="ios,android" ion-button block (click)="dismiss()"> Back </button>
 </ion-content>
