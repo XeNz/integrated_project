@@ -1,112 +1,112 @@
 <ion-header>
-  <ion-navbar>
-    <button ion-button icon-only menuToggle>
+    <ion-navbar>
+        <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>
-      <ion-row class="menuRow" responsive-sm>
-        <ion-col class="hiddenMenuItems" width-25>
-          Home
-        </ion-col>
-        <ion-col id="menuRobotName" class="menuItems" width-25>
-          {{ this.robot.robotName }}
-        </ion-col>
-        <ion-col class="hiddenMenuItems" width-25>
-          {{ this.robot.robotIP }}
-        </ion-col>
-        <ion-col class="menuItems" width-25>
-          <ion-icon ios="ios-battery-charging" md="md-battery-charging"></ion-icon>
-          {{ this.robot.batteryLevel }}
-        </ion-col>
-      </ion-row>
-    </ion-title>
-  </ion-navbar>
+        <ion-title>
+            <ion-row class="menuRow" responsive-sm>
+                <ion-col class="hiddenMenuItems" width-25>
+                    Home
+                </ion-col>
+                <ion-col id="menuRobotName" class="menuItems" width-25>
+                    {{ this.robot.robotName }}
+                </ion-col>
+                <ion-col class="hiddenMenuItems" width-25>
+                    {{ this.robot.robotIP }}
+                </ion-col>
+                <ion-col class="menuItems" width-25>
+                    <ion-icon ios="ios-battery-charging" md="md-battery-charging"></ion-icon>
+                    {{ this.robot.batteryLevel }}
+                </ion-col>
+            </ion-row>
+        </ion-title>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-grid>
-    <!-- Loop over every action of the action list -->
-    <div *ngFor="let act of this.robot.postureActions; let i = index" id="actionColumn">
-      <!-- do nothing if the index is greater than half of the length of the action list -->
-      <div *ngIf="i < (this.robot.postureActions.length/2)">
-        <ion-row responsive-sm>
-          <ion-col width-30></ion-col>
-          <ion-col width-30>
-            <button ion-button block (click)="this.robot.action(this.act)"> {{ this.robot.postureActions[i] }}</button>
-          </ion-col>
-          <ion-col width-30>
-            <button ion-button block (click)="this.robot.action(this.act)">{{ this.robot.postureActions[(this.robot.postureActions.length/2 + i)] }}</button>
-          </ion-col>
-          <ion-col width-30></ion-col>
+    <ion-grid>
+        <!-- Loop over every action of the action list -->
+        <div *ngFor="let act of this.robot.postureActions; let i = index" id="actionColumn">
+            <!-- do nothing if the index is greater than half of the length of the action list -->
+            <div *ngIf="i < (this.robot.postureActions.length/2)">
+                <ion-row class="action-button-row" responsive-sm>
+                    <ion-col width-30></ion-col>
+                    <ion-col width-30>
+                        <button ion-button block (click)="this.robot.action(this.act)"> {{ this.robot.postureActions[i] }}</button>
+                    </ion-col>
+                    <ion-col width-30>
+                        <button ion-button block (click)="this.robot.action(this.act)">{{ this.robot.postureActions[(this.robot.postureActions.length/2 + i)] }}</button>
+                    </ion-col>
+                    <ion-col width-30></ion-col>
+                </ion-row>
+            </div>
+        </div>
+        <ion-row class="action-button-row" responsive-sm>
+            <ion-col width-30></ion-col>
+            <ion-col width-15>
+                <button ion-button block (click)="presentStream()"> STREAM </button>
+            </ion-col>
+            <ion-col width-15>
+                <button ion-button block (click)="presentGuessAge()"> GUESS AGE </button>
+            </ion-col>
+            <ion-col width-30></ion-col>
         </ion-row>
-      </div>
-    </div>
-    <ion-row responsive-sm>
-      <ion-col width-30></ion-col>
-      <ion-col width-15>
-        <button ion-button block (click)="presentStream()"> STREAM </button>
-      </ion-col>
-      <ion-col width-15>
-        <button ion-button block (click)="presentGuessAge()"> GUESS AGE </button>
-      </ion-col>
-      <ion-col width-30></ion-col>
-    </ion-row>
-    <ion-row responsive-sm>
-      <ion-col width-30></ion-col>
-      <ion-col width-30>
-        <ion-card>
-          <ion-card-header>
-            Volume {{ robot?.volume }}
-          </ion-card-header>
-          <ion-item>
-            <ion-range min="0" max="100" step="5" snaps="true" [(ngModel)]="volume">
-              <ion-icon range-left small name="volume-down"></ion-icon>
-              <ion-icon range-right name="volume-up"></ion-icon>
-            </ion-range>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-      <ion-col width-30></ion-col>
-    </ion-row>
-    <ion-row responsive-sm>
-      <ion-col width-30></ion-col>
-      <ion-col width-30>
-        <ion-card>
-          <ion-card-header>
-            Say
-          </ion-card-header>
-          <ion-item>
-            <!-- Note that <ion-textarea> must load its value from the value or [(ngModel)] attribute. Unlike the native <textarea> element, <ion-textarea> does not support loading its value from the textarea's inner content. -->
-            <ion-textarea [(ngModel)]="text" name="text"></ion-textarea>
-            <!-- ??? -->
-          </ion-item>
-          <ion-item>
-            <button ion-button (click)="this.robot.ask(this.text)">Play</button>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-      <ion-col width-30></ion-col>
-    </ion-row>
-    <ion-row responsive-sm>
-      <ion-col width-30></ion-col>
-      <ion-col width-30>
-        <ion-card>
-          <ion-card-header>
-            Move
-          </ion-card-header>
-          <ion-item>
-            <!-- Note that <ion-textarea> must load its value from the value or [(ngModel)] attribute. Unlike the native <textarea> element, <ion-textarea> does not support loading its value from the textarea's inner content. -->
-            <ion-input type="number" [(ngModel)]="moveCoordinateX" name="moveCoordinateX" placeholder="x"></ion-input>
-            <ion-input type="number" [(ngModel)]="moveCoordinateY" name="moveCoordinateY" placeholder="y"></ion-input>
-            <ion-input type="number" [(ngModel)]="moveCoordinateD" name="moveCoordinateD" placeholder="d"></ion-input>
-            <!-- ??? -->
-          </ion-item>
-          <ion-item>
-            <button ion-button (click)="this.robot.move(this.moveCoordinateX, this.moveCoordinateY, this.moveCoordinateD)">Move</button>
-          </ion-item>
-        </ion-card>
-      </ion-col>
-      <ion-col width-30></ion-col>
-    </ion-row>
-  </ion-grid>
+        <ion-row responsive-sm>
+            <ion-col width-30></ion-col>
+            <ion-col width-30>
+                <ion-card>
+                    <ion-card-header>
+                        Volume {{ robot?.volume }}
+                    </ion-card-header>
+                    <ion-item>
+                        <ion-range min="0" max="100" step="5" snaps="true" [(ngModel)]="volume">
+                            <ion-icon range-left small name="volume-down"></ion-icon>
+                            <ion-icon range-right name="volume-up"></ion-icon>
+                        </ion-range>
+                    </ion-item>
+                </ion-card>
+            </ion-col>
+            <ion-col width-30></ion-col>
+        </ion-row>
+        <ion-row responsive-sm>
+            <ion-col width-30></ion-col>
+            <ion-col width-30>
+                <ion-card>
+                    <ion-card-header>
+                        Say
+                    </ion-card-header>
+                    <ion-item>
+                        <!-- Note that <ion-textarea> must load its value from the value or [(ngModel)] attribute. Unlike the native <textarea> element, <ion-textarea> does not support loading its value from the textarea's inner content. -->
+                        <ion-textarea [(ngModel)]="text" name="text"></ion-textarea>
+                        <!-- ??? -->
+                    </ion-item>
+                    <ion-item>
+                        <button ion-button (click)="this.robot.ask(this.text)">Play</button>
+                    </ion-item>
+                </ion-card>
+            </ion-col>
+            <ion-col width-30></ion-col>
+        </ion-row>
+        <ion-row responsive-sm>
+            <ion-col width-30></ion-col>
+            <ion-col width-30>
+                <ion-card>
+                    <ion-card-header>
+                        Move
+                    </ion-card-header>
+                    <ion-item>
+                        <!-- Note that <ion-textarea> must load its value from the value or [(ngModel)] attribute. Unlike the native <textarea> element, <ion-textarea> does not support loading its value from the textarea's inner content. -->
+                        <ion-input type="number" [(ngModel)]="moveCoordinateX" name="moveCoordinateX" placeholder="x"></ion-input>
+                        <ion-input type="number" [(ngModel)]="moveCoordinateY" name="moveCoordinateY" placeholder="y"></ion-input>
+                        <ion-input type="number" [(ngModel)]="moveCoordinateD" name="moveCoordinateD" placeholder="d"></ion-input>
+                        <!-- ??? -->
+                    </ion-item>
+                    <ion-item>
+                        <button ion-button (click)="this.robot.move(this.moveCoordinateX, this.moveCoordinateY, this.moveCoordinateD)">Move</button>
+                    </ion-item>
+                </ion-card>
+            </ion-col>
+            <ion-col width-30></ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>

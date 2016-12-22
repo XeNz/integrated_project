@@ -1,21 +1,27 @@
 @media (max-width: 567px) {
     page-home {
-        .hiddenMenuItems{
+        .hiddenMenuItems {
             display: none;
         }
-        .menuItems{
+        .menuItems {
             float: left;
             margin-top: 0px;
             margin-bottom: 0px !important;
         }
-        .menuRow{
+        .menuRow {
             overflow: hidden;
             flex-direction: row;
             -webkit-flex-direction: row;
             -ms-flex-direction: row;
         }
-        #menuRobotName{
+        #menuRobotName {
             padding-top: 0.4em;
+        }
+        .action-button-row {
+            flex-direction: row;
+            button {
+                width: 10em;
+            }
         }
     }
 }
