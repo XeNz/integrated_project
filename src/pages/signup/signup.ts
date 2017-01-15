@@ -4,6 +4,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { AuthData } from '../../providers/auth-data';
 import { EmailValidator } from '../../validators/email';
 import { RobotListPage } from '../robot-list/robot-list';
+import { AngularFire } from 'angularfire2';
+
 
 @Component({
   selector: 'page-signup',
@@ -16,13 +18,14 @@ export class SignupPage {
   submitAttempt: boolean = false;
   user: any;
   loading;
-
+  af: AngularFire;
 
 
   constructor(public nav: NavController, public authData: AuthData,
     public formBuilder: FormBuilder, public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController, public toastCtrl: ToastController) {
+    public alertCtrl: AlertController, public toastCtrl: ToastController, af: AngularFire) {
 
+    this.af = af;
     this.signupForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required,
       EmailValidator.isValid])],
@@ -31,64 +34,43 @@ export class SignupPage {
     });
   }
 
-  /**
-  * Receives an input field and sets the corresponding fieldChanged property to 'true' to help with the styles.
-  */
+
   elementChanged(input) {
     let field = input.inputControl.name;
     this[field + "Changed"] = true;
   }
 
-  /**
-  * If the form is valid it will call the AuthData service to sign the user up password displaying a loading
-  * component while the user waits.
-  *
-  * If the form is invalid it will just log the form value, feel free to handle that as you like.
-  */
+
   signupUser() {
     this.submitAttempt = true;
+    var accountCreatedToast = this.toastCtrl.create({
+      message: 'Successfully created account.',
+      duration: 3000
+    });
+    this.loading = this.loadingCtrl.create({
+      dismissOnPageChange: true,
+    });
+
 
     if (!this.signupForm.valid) {
       console.log(this.signupForm.value);
     } else {
       this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password).then(() => {
-        // userid scope issue fix
-        this.authData.af.auth.subscribe(user => {
-          if (user) {
-            this.user = user.uid;
-            console.log(user);
-            // present toast
-            var accountCreatedToast = this.toastCtrl.create({
-              message: 'Successfully created account.',
-              duration: 3000
-            });
-            accountCreatedToast.present();
-            setTimeout(function () {
-              accountCreatedToast.dismiss();
-            }, 2000);
-          }
-        });
-        this.nav.setRoot(RobotListPage, { user: this.user });
-      }, (error) => {
-        this.loading.dismiss().then(() => {
-          var errorMessage: string = error.message;
-          let alert = this.alertCtrl.create({
-            message: errorMessage,
-            buttons: [
-              {
-                text: "Ok",
-                role: 'cancel'
-              }
-            ]
-          });
-          alert.present();
-        });
-      });
 
-      this.loading = this.loadingCtrl.create({
-        dismissOnPageChange: true,
+        // userid scope issue fix
+        this.authData.loginUser(this.signupForm.value.email, this.signupForm.value.password).then(() => {
+          this.af.auth.subscribe(user => {
+            if (user) {
+              this.nav.setRoot(RobotListPage, { user: user.uid });
+              accountCreatedToast.present();
+              setTimeout(function () {
+                accountCreatedToast.dismiss();
+              }, 2000);
+              this.loading.present();
+            }
+          });
+        });
       });
-      this.loading.present();
-    }
-  }
-}
+    }//else
+  }//method
+};

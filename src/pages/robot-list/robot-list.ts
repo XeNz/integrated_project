@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController, AlertController, MenuController } from 'ionic-angular';
 
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import { RobotListProvider } from '../../providers/robotList-provider';
 import { AngularFire } from 'angularfire2';
 import { RobotProvider } from '../../providers/robot-provider';
@@ -18,6 +20,7 @@ import { HomePage } from '../home/home';
   templateUrl: 'robot-list.html'
 })
 export class RobotListPage {
+  robotListSubscription: Subscription;
   robotList: any[];
   af: AngularFire;
   user: any;
@@ -41,6 +44,14 @@ export class RobotListPage {
 
   ionViewDidLoad() {
     this.getRobotList();
+  }
+  ionViewWillLeave() {
+    this.robotListSubscription.unsubscribe();
+    // console.log("unsubscribed robotList Subscription");
+
+    // if (this.robotListSubscription) {
+    //   console.log("still exists");
+    // }
   }
 
   addRobotToList() {
@@ -70,7 +81,7 @@ export class RobotListPage {
                   this.type = typeData.type;
                   // Add robot to list
                   this.robotListProvider.addRobotToList(this.user, data.robotIP, this.type);
-                  this.getRobotList();
+                  // this.getRobotList();
                 }, error => {
                   prompt.dismiss();
                   let ipvalidateToast = this.toastCtrl.create({
@@ -145,12 +156,13 @@ export class RobotListPage {
   }
 
   getRobotList() {
-    var list = this.robotListProvider.getRobotList(this.user)
+    this.robotListSubscription = this.robotListProvider.getRobotList(this.user)
       .subscribe(data => {
         this.robotList = data;
-        list.unsubscribe();
       });
-    
+  }
+  unsubscribeRobotList() {
+    this.robotListSubscription
   }
   deleteRobotIP(robotIP, key: string) {
     let prompt = this.alertCtrl.create({
@@ -166,7 +178,7 @@ export class RobotListPage {
           text: 'Delete',
           handler: data => {
             this.robotListProvider.deleteRobotIP(this.user, robotIP, key);
-            this.getRobotList();
+            // this.getRobotList();
             var deleteRobotToast = this.toastCtrl.create({
               message: 'Successfully deleted ' + robotIP + '.',
               duration: 3000
