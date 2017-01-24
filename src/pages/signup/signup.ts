@@ -71,6 +71,6 @@ export class SignupPage {
           });
         });
       });
-    }//else
-  }//method
+    }
+  }
 };

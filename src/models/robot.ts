@@ -12,18 +12,13 @@ export class Robot {
     volume: number;
 
     constructor(robotType, robotIP, robotProvider) {
-        //TODO: implement constructor
         this.robotType = robotType;
         this.robotIP = robotIP;
         this.robotProvider = robotProvider;
     }
 
-    talk() {
-        //TODO: implement talk method
-    }
-
     camera() {
-        //TODO: implement camera method
+        // Only on physical robot.
     }
 
     getName() {

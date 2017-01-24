@@ -46,11 +46,6 @@ export class RobotListPage {
   }
   ionViewWillLeave() {
     this.robotListSubscription.unsubscribe();
-    // console.log("unsubscribed robotList Subscription");
-
-    // if (this.robotListSubscription) {
-    //   console.log("still exists");
-    // }
   }
 
   addRobotToList() {

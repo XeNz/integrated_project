@@ -51,7 +51,6 @@ export class MyApp {
   }
 
   openPage(page) {
-    console.log(page.component);
     if (this.nav.getActive().name == "HomePage" && page.title == "Home") {
       this.menu.close();
     }

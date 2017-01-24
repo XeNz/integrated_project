@@ -27,7 +27,6 @@ export class RobotListProvider {
     
     // Removes the robotIP from the robotIPList of the current user
     deleteRobotIP(userID, robotIP, key) {
-        //console.log("deleterobotip" + robotIP + " , " + userID);
         const queryObservable = this.af.database.list(userID + '/robotList/', {
             query: {
                 orderByChild: 'ip',

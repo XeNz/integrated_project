@@ -35,7 +35,6 @@ export class AuthData {
   deleteUser() {
     this.af.auth
       .subscribe(authState => {
-        // console.log(authState);
         authState.auth.delete()
           .then(_ => console.log('deleted user!'))
           // Is spitting errors but it's ok, account still gets deleted
