@@ -154,7 +154,7 @@ export class RobotListPage {
       });
   }
   unsubscribeRobotList() {
-    this.robotListSubscription
+    this.robotListSubscription.unsubscribe();
   }
   deleteRobotIP(robotIP, key: string) {
     let prompt = this.alertCtrl.create({
