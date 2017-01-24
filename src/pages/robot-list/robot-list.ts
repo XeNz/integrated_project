@@ -75,7 +75,6 @@ export class RobotListPage {
                   this.type = typeData.type;
                   // Add robot to list
                   this.robotListProvider.addRobotToList(this.user, data.robotIP, this.type);
-                  // this.getRobotList();
                 }, error => {
                   prompt.dismiss();
                   let ipvalidateToast = this.toastCtrl.create({
@@ -102,7 +101,6 @@ export class RobotListPage {
       ]
     });
     prompt.present();
-
   }
 
   validateIP(data) {
