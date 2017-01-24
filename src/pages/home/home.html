@@ -34,7 +34,7 @@
                         <button ion-button block (click)="executeAction(this.act)"> {{ this.robot.postureActions[i] }}</button>
                     </ion-col>
                     <ion-col>
-                        <button ion-button block (click)="executeAction(this.act)">{{ this.robot.postureActions[(this.robot.postureActions.length/2 + i)] }}</button>
+                        <button ion-button block (click)="executeAction(this.robot.postureActions[(this.robot.postureActions.length/2 + i)])">{{ this.robot.postureActions[(this.robot.postureActions.length/2 + i)] }}</button>
                     </ion-col>
                 </ion-row>
             </div>
