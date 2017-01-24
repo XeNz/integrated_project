@@ -1,6 +1,4 @@
 import { RobotProvider } from '../providers//robot-provider';
-import { ToastController} from 'ionic-angular';
-
 
 export class Robot {
     robotType: any;
@@ -12,7 +10,6 @@ export class Robot {
     postureActions: any
     age: number;
     volume: number;
-    public toastCtrl: ToastController;
 
     constructor(robotType, robotIP, robotProvider) {
         //TODO: implement constructor
@@ -73,7 +70,6 @@ export class Robot {
         this.robotProvider.action(this.robotIP, action).subscribe(
             data => {
                 console.log(data.posture);
-                this.presentActionToast(action);
             },
             err => {
                 console.log(err);
@@ -119,13 +115,5 @@ export class Robot {
             err => {
                 console.log(err);
             });
-    }
-
-    presentActionToast(action){
-        var actionToast = this.toastCtrl.create({
-            message: action + ' executed!',
-            duration: 3000
-        });
-        actionToast.present();
     }
 }

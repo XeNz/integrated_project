@@ -31,10 +31,10 @@
             <div *ngIf="i < (this.robot.postureActions.length/2)">
                 <ion-row class="action-button-row" responsive-sm>
                     <ion-col class="center">
-                        <button ion-button block (click)="this.robot.action(this.act)"> {{ this.robot.postureActions[i] }}</button>
+                        <button ion-button block (click)="executeAction(this.act)"> {{ this.robot.postureActions[i] }}</button>
                     </ion-col>
                     <ion-col>
-                        <button ion-button block (click)="this.robot.action(this.act)">{{ this.robot.postureActions[(this.robot.postureActions.length/2 + i)] }}</button>
+                        <button ion-button block (click)="executeAction(this.act)">{{ this.robot.postureActions[(this.robot.postureActions.length/2 + i)] }}</button>
                     </ion-col>
                 </ion-row>
             </div>

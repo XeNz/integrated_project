@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RobotProvider } from '../../providers/robot-provider';
-import { NavController, NavParams, MenuController, ModalController } from 'ionic-angular';
+import { NavController, NavParams, MenuController, ModalController, ToastController } from 'ionic-angular';
 import { Robot } from '../../models/robot'
 import { Pepper } from '../../models/pepper'
 import { Nao } from '../../models/nao'
@@ -33,7 +33,7 @@ export class HomePage {
 
     public robot: Robot;
 
-    constructor(public navCtrl: NavController, private modalController: ModalController, public params: NavParams, public robotProvider: RobotProvider, private menuCtrl: MenuController) {
+    constructor(public navCtrl: NavController, private modalController: ModalController, public params: NavParams, public robotProvider: RobotProvider, private menuCtrl: MenuController, public toastCtrl: ToastController) {
         this.menuCtrl.enable(true);
         this.robot = params.get('robot');
         this.castRobotType();
@@ -69,5 +69,14 @@ export class HomePage {
     presentGuessAge() {
         let guessAgePage = this.modalController.create(GuessAgeModalPage, this.robot);
         guessAgePage.present();
+    }
+
+    executeAction(action){
+        this.robot.action(action);
+        let actionToast = this.toastCtrl.create({
+            message: action + ' executed!',
+            duration: 3000
+        });
+        actionToast.present();
     }
 }
