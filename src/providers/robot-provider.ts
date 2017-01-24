@@ -5,12 +5,6 @@ import 'rxjs/add/operator/retry';
 import 'rxjs/add/operator/timeout';
 import 'rxjs/add/operator/delay';
 
-/*
-  Generated class for the RobotProvider provider.
-
-  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
-  for more info on providers and Angular 2 DI.
-*/
 @Injectable()
 export class RobotProvider {
 
