@@ -2,4 +2,10 @@ page-guess-age-modal {
     .backbutton {
         box-shadow: 0;
     }
+    #guessedAge {
+        font-size: 2em;
+        font-style: bold;
+        text-align: center;
+        display: block;
+    }
 }

@@ -15,7 +15,6 @@ import { Robot } from '../../models/robot';
 })
 export class GuessAgeModalPage {
   robot: Robot;
-  age: any;
 
   constructor(public navCtrl: NavController, private viewCtrl: ViewController, private navParams: NavParams) {
     this.robot = this.navParams.data;
@@ -27,6 +26,5 @@ export class GuessAgeModalPage {
 
   guessAge() {
     this.robot.guessAge();
-    this.age = this.robot.age;
   }
 }
