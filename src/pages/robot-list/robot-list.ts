@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, ToastController, AlertController, MenuController } from 'ionic-angular';
 
-import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
 import { RobotListProvider } from '../../providers/robotList-provider';
 import { AngularFire } from 'angularfire2';
