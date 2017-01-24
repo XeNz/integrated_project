@@ -7,7 +7,7 @@
 </ion-header>
 <ion-content padding>
     <img src="./assets/images/RobotRemoteLogo-01.png" alt="roboto">
-    <p *ngIf="age">Age: {{ age }}</p>
+    <p id="guessedAge" [hidden]="!this.robot.age">Age: {{ this.robot.age }}</p>
     <button ion-button block (click)="guessAge()"> Guess Age </button>
     <button hideWhen="ios,android" ion-button block (click)="dismiss()"> Back </button>
 </ion-content>
