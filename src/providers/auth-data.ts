@@ -4,6 +4,7 @@ import { AngularFire } from 'angularfire2';
 
 @Injectable()
 export class AuthData {
+  LOGOUT_TIMER: number = 7200000;
   fireAuth: any;
   constructor(public af: AngularFire) {
     af.auth.subscribe(user => {
@@ -40,5 +41,13 @@ export class AuthData {
           // Is spitting errors but it's ok, account still gets deleted
           .catch(e => console.error(e))
       });
+  }
+
+  startLogoutTimer(){
+    // Logout user after timer expires.
+    var interval = setInterval(() => {
+        this.logoutUser();
+        clearInterval(interval);
+    }, this.LOGOUT_TIMER);
   }
 }

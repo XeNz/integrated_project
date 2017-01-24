@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { RobotListProvider } from '../../providers/robotList-provider';
 import { AngularFire } from 'angularfire2';
 import { RobotProvider } from '../../providers/robot-provider';
+import { AuthData } from '../../providers/auth-data';
 
 import { Pepper } from '../../models/pepper';
 import { Nao } from '../../models/nao';
@@ -35,7 +36,7 @@ export class RobotListPage {
   });
 
 
-  constructor(public navCtrl: NavController, private robotListProvider: RobotListProvider, af: AngularFire, public params: NavParams, private robotProvider: RobotProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController, private menuCtrl: MenuController) {
+  constructor(public navCtrl: NavController, private robotListProvider: RobotListProvider, af: AngularFire, public params: NavParams, private robotProvider: RobotProvider, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public alertCtrl: AlertController, private menuCtrl: MenuController, public authData: AuthData) {
     this.menuCtrl.enable(false);
     this.user = params.get('user');
     this.af = af;
@@ -43,6 +44,7 @@ export class RobotListPage {
 
   ionViewDidLoad() {
     this.getRobotList();
+    this.authData.startLogoutTimer();
   }
   ionViewWillLeave() {
     this.robotListSubscription.unsubscribe();

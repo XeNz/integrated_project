@@ -45,6 +45,7 @@ export class LoginPage {
       console.log(this.loginForm.value);
     } else {
       this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password).then(authData => {
+        this.authData.startLogoutTimer();
       }, error => {
         this.loading.dismiss().then(() => {
           let alert = this.alertCtrl.create({
