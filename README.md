@@ -18,7 +18,7 @@
 
 
   <br>
-## 3. launch the application
+## 3. Launch the application
   Open your terminal and `cd` to the project folder.
   
   Enter the following command:
